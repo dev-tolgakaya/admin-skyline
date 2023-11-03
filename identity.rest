@@ -1,0 +1,58 @@
+# https://github.com/Huachao/vscode-restclient
+@identity-api=https://localhost:7001
+@api-gateway=http://api-gateway.virtualposai.com:8080
+@contentType = application/json
+
+###
+# @name ApiRoot
+GET {{identity-api}}
+###
+
+###
+# @name Login
+POST {{api-gateway}}/api/v1/identity/login
+accept: application/json
+Content-Type: application/json
+
+{
+  "userNameOrEmail": "SercanKaya",
+  "password": "123456789",
+  "remember": true
+}
+###
+
+###
+# @name Register_New_User
+POST {{api-gateway}}/api/v1/identity/users
+accept: application/json
+Content-Type: application/json
+
+{
+  "firstName": "sercan",
+  "lastName": "kaya",
+  "userName": "sercankaya22",
+  "email": "sercan.kaya4@softrobotics.com.tr",
+  "password": "123456789",
+  "phoneNumber": "122335345345435",
+  "confirmPassword": "123456789",
+  "roles": [
+    "user"
+  ]
+}
+###
+
+###
+# @name Get_All_Users
+@page=1
+@pageSize=20
+GET {{api-gateway}}/api/v1/identity/users?Page={{page}}&PageSize={{pageSize}}
+accept: application/json
+Content-Type: application/x-www-form-urlencoded
+###
+
+###
+# @name Get_User_By_Email
+@email=sercan.kaya@softrobotics.com.tr
+GET {{api-gateway}}/api/v1/identity/users/by-email/{{email}}
+accept: application/json
+###

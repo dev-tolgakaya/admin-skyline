@@ -13,7 +13,6 @@ const loginSlice = createSlice({
     initialState,
     reducers: {
         loginSuccess(state, action) {
-
             state.user = action.payload
             state.loading = false;
             state.errorMsg = false;
