@@ -11,28 +11,26 @@ import { withTranslation } from "react-i18next";
 // Redux
 import { Link } from "react-router-dom";
 import withRouter from "../../Common/withRouter";
-import { createSelector } from 'reselect';
-
+import { createSelector } from "reselect";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../../slices/thunk";
+import { useNavigate } from "react-router-dom";
 
 // users
 import user1 from "../../../assets/images/users/avatar-1.jpg";
 
-import { useSelector } from "react-redux";
-
 const ProfileMenu = (props: any) => {
   // Declare a new state variable, which we'll call "menu"
   const [menu, setMenu] = useState(false);
+  const dispatch = useDispatch<any>();
+  const navigate = useNavigate();
 
   const [username, setusername] = useState("Admin");
 
   const profile = (state: any) => state.Profile;
-  const selectProfileProperties = createSelector(
-    profile,
-    (success) => success,
-  );
+  const selectProfileProperties = createSelector(profile, (success) => success);
 
   const { success } = useSelector(selectProfileProperties);
-
 
   useEffect(() => {
     if (localStorage.getItem("authUser")) {
@@ -66,7 +64,9 @@ const ProfileMenu = (props: any) => {
             src={user1}
             alt="Header Avatar"
           />
-          <span className="d-none d-xl-inline-block ms-2 me-1">{username || "admin"}</span>
+          <span className="d-none d-xl-inline-block ms-2 me-1">
+            {username || "admin"}
+          </span>
           <i className="mdi mdi-chevron-down d-none d-xl-inline-block" />
         </DropdownToggle>
         <DropdownMenu className="dropdown-menu-end">
@@ -75,7 +75,10 @@ const ProfileMenu = (props: any) => {
             <i className="bx bx-user font-size-16 align-middle me-1" />
             {props.t("Profile")}{" "}
           </DropdownItem>
-          <DropdownItem tag="a" href={process.env.PUBLIC_URL + "/crypto-wallet"}>
+          <DropdownItem
+            tag="a"
+            href={process.env.PUBLIC_URL + "/crypto-wallet"}
+          >
             <i className="bx bx-wallet font-size-16 align-middle me-1" />
             {props.t("My Wallet")}
           </DropdownItem>
@@ -84,15 +87,21 @@ const ProfileMenu = (props: any) => {
             <i className="bx bx-wrench font-size-16 align-middle me-1" />
             {props.t("Settings")}
           </DropdownItem>
-          <DropdownItem tag="a" href={process.env.PUBLIC_URL + "/auth-lock-screen"}>
+          <DropdownItem
+            tag="a"
+            href={process.env.PUBLIC_URL + "/auth-lock-screen"}
+          >
             <i className="bx bx-lock-open font-size-16 align-middle me-1" />
             {props.t("Lock screen")}
           </DropdownItem>
           <div className="dropdown-divider" />
-          <Link to="/logout" className="dropdown-item">
+          <DropdownItem
+            className="dropdown-item"
+            onClick={() => dispatch(logoutUser(navigate))}
+          >
             <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" />
             <span>{props.t("Logout")}</span>
-          </Link>
+          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </React.Fragment>

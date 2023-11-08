@@ -5,11 +5,23 @@ const axiosApiInstance = axios.create();
 // default
 const baseURL = process.env.REACT_APP_API_GATEWAY;
 
+const getLoggedinUser = () => {
+  const user = localStorage.getItem("authUser");
+  if (!user) {
+    return null;
+  } else {
+    return JSON.parse(user);
+  }
+};
+
 axiosApiInstance.interceptors.request.use(
   function (config) {
     config.headers!["Accept-Language"] = "tr";
     config.headers!["Content-Type"] = "application/json; charset=utf-8";
     config.headers!["Access-Control-Allow-Origin"] = "*";
+    config.headers["Authorization"] = `Bearer ${
+      getLoggedinUser()?.accessToken || null
+    }`;
     return config;
   },
 
@@ -58,9 +70,6 @@ class API {
    * Fetches data from given url
    */
 
-  //  get = (url, params) => {
-  //   return axios.get(url, params);
-  // };
   GET = (url: any, params: any) => {
     let response: any;
 
@@ -104,10 +113,6 @@ class API {
   PUT = (url: any, data: any) => {
     return axiosApiInstance.patch(baseURL + "/" + url, data);
   };
-
-  put = (url: any, data: any) => {
-    return axiosApiInstance.put(baseURL + "/" + url, data);
-  };
   /**
    * Delete
    */
@@ -115,14 +120,5 @@ class API {
     return axiosApiInstance.delete(baseURL + "/" + url, { ...config });
   };
 }
-
-const getLoggedinUser = () => {
-  const user = localStorage.getItem("authUser");
-  if (!user) {
-    return null;
-  } else {
-    return JSON.parse(user);
-  }
-};
 
 export { API, setAuthorization, getLoggedinUser };

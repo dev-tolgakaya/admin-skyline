@@ -1,14 +1,16 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from "react";
 import withRouter from "Components/Common/withRouter";
 import { Navigate } from "react-router-dom";
 
 import { logoutUser } from "../../slices/thunk";
+import { useNavigate } from "react-router-dom";
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 
 const Logout = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch<any>();
 
   const selectProperties = createSelector(
@@ -19,7 +21,7 @@ const Logout = () => {
   const { isUserLogout } = useSelector(selectProperties);
 
   useEffect(() => {
-    dispatch(logoutUser());
+    dispatch(logoutUser(navigate));
   }, [dispatch]);
 
   if (isUserLogout) {
@@ -27,7 +29,6 @@ const Logout = () => {
   }
 
   return <></>;
-}
+};
 
-
-export default withRouter(Logout)
+export default withRouter(Logout);
