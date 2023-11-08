@@ -1,6 +1,6 @@
 import { getFirebaseBackend } from "helpers/firebase_helper";
-import { postFakeLogin, postJwtLogin } from "helpers/fakebackend_helper";
 import { AuthService } from "../../../helpers/services/auth";
+import { setAuthorization } from "../../../helpers/api";
 import {
   loginSuccess,
   apiError,
@@ -8,35 +8,46 @@ import {
   resetLoginFlag,
 } from "./reducer";
 import { toast } from "react-toastify";
+import i18n from "../../../i18n";
+import { openLoading, closeLoading } from "./reducer";
 
 export const loginuser =
   (userData: any, history: any) => async (dispatch: any) => {
+    dispatch(openLoading());
     try {
       const response = await AuthService.loginUser(userData);
       if (response) {
-        toast.success("Logged In Successfulyy", { autoClose: 2000 });
+        setAuthorization(response.accessToken);
+        toast.success(i18n.t("ToastMessages.Auth.LoginSuccess"), {
+          autoClose: 2000,
+        });
         localStorage.setItem("authUser", JSON.stringify(response));
         dispatch(loginSuccess(response));
         history("/dashboard");
       }
-    } catch (error) {
-      toast.error("Project Update Failded", { autoClose: 2000 });
+    } catch (error: any) {
+      toast.error(error, { autoClose: 2000 });
       return error;
     }
+    dispatch(closeLoading());
   };
 
 export const logoutUser = (navigate: any) => async (dispatch: any) => {
+  dispatch(openLoading());
   try {
     const response = await AuthService.logoutUser({});
     if (response) {
-      toast.success("Logged Out Successfulyy", { autoClose: 2000 });
+      toast.success(i18n.t("ToastMessages.Auth.LogoutSucces"), {
+        autoClose: 2000,
+      });
       localStorage.removeItem("authUser");
       dispatch(logoutUserSuccess());
-      navigate("/login")
+      navigate("/login");
     }
   } catch (error) {
     dispatch(apiError(error));
   }
+  dispatch(closeLoading());
 };
 
 export const resetLoginMsgFlag = () => {

@@ -4,6 +4,7 @@ import { Spinner } from "reactstrap";
 const Spinners = ({ setLoading }: any) => {
 
     useEffect(() => {
+        if(!setLoading) return;
         setTimeout(() => {
             setLoading(false)
         }, 1000)

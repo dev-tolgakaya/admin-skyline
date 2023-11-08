@@ -5,6 +5,10 @@ import russia from "../assets/images/flags/russia.jpg";
 import usflag from "../assets/images/flags/us.jpg"
 
 const languages : Object = {
+    tr :{
+        label : "Türkçe",
+        flag :spain
+    },
     sp :{
         label : "Spanish",
         flag :spain

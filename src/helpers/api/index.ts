@@ -19,9 +19,6 @@ axiosApiInstance.interceptors.request.use(
     config.headers!["Accept-Language"] = "tr";
     config.headers!["Content-Type"] = "application/json; charset=utf-8";
     config.headers!["Access-Control-Allow-Origin"] = "*";
-    config.headers["Authorization"] = `Bearer ${
-      getLoggedinUser()?.accessToken || null
-    }`;
     return config;
   },
 
@@ -39,14 +36,18 @@ axiosApiInstance.interceptors.response.use(
     return response.data ? response.data : response;
   },
   function (error: any) {
+    console.log("error", error);
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     let message: any;
-    switch (error.status) {
+    switch (error.response.status) {
       case 500:
         message = "Internal Server Error";
         break;
       case 401:
         message = "Invalid credentials";
+        break;
+      case 403:
+        message = "Hatalı kullanıcı adı veya şifre";
         break;
       case 404:
         message = "Sorry! the data you are looking for could not be found";
@@ -63,6 +64,7 @@ axiosApiInstance.interceptors.response.use(
  */
 const setAuthorization = (token: any) => {
   axiosApiInstance.defaults.headers.common["Authorization"] = "Bearer " + token;
+  console.log("token", token);
 };
 
 class API {
@@ -97,8 +99,6 @@ class API {
    * post given data to url
    */
   POST = (url: any, data: any) => {
-    console.log("data", data);
-    console.log("baseURL", baseURL + "/" + url);
     return axiosApiInstance.post(baseURL + "/" + url, data, {
       Headers: {
         "Content-Type": "application/json",

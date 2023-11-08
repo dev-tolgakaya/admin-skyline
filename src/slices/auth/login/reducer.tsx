@@ -32,8 +32,20 @@ const loginSlice = createSlice({
     logoutUserSuccess(state) {
       state.isUserLogout = true;
     },
+    openLoading(state) {
+      state.loading = true;
+    },
+    closeLoading(state) {
+      state.loading = false;
+    },
   },
 });
-export const { loginSuccess, apiError, resetLoginFlag, logoutUserSuccess } =
-  loginSlice.actions;
+export const {
+  loginSuccess,
+  apiError,
+  resetLoginFlag,
+  logoutUserSuccess,
+  openLoading,
+  closeLoading,
+} = loginSlice.actions;
 export default loginSlice.reducer;

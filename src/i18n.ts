@@ -6,7 +6,8 @@ import translationGr from "./locales/gr/translation.json";
 import translationIT from "./locales/it/translation.json";
 import translationRS from "./locales/rs/translation.json";
 import translationSP from "./locales/sp/translation.json";
-import translationENG from "./locales/eng/translation.json";
+import translationENG from "./locales/en/translation.json";
+import translationTR from "./locales/tr/translation.json";
 
 // the translations
 const resources : any = {
@@ -22,8 +23,11 @@ const resources : any = {
   sp: {
     translation: translationSP,
   },
-  eng: {
+  en: {
     translation: translationENG,
+  },
+  tr: {
+    translation: translationTR,
   },
 };
 
@@ -40,7 +44,7 @@ i18n
     lng: localStorage.getItem("I18N_LANGUAGE") || "en",
     fallbackLng: "en", // use en if detected lng is not available
 
-    keySeparator: false, // we do not use keys in form messages.welcome
+    // keySeparator: false, // we do not use keys in form messages.welcome
 
     interpolation: {
       escapeValue: false, // react already safes from xss
