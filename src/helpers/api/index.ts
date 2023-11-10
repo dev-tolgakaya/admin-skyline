@@ -2,7 +2,6 @@ import axios from "axios";
 
 const axiosApiInstance = axios.create();
 
-// default
 const baseURL = process.env.REACT_APP_API_GATEWAY;
 
 const getLoggedinUser = () => {
@@ -14,11 +13,15 @@ const getLoggedinUser = () => {
   }
 };
 
+const authObj = localStorage.getItem("authUser");
+const parsedAuthObj = authObj ? JSON.parse(authObj) : null;
+
 axiosApiInstance.interceptors.request.use(
   function (config) {
     config.headers!["Accept-Language"] = "tr";
     config.headers!["Content-Type"] = "application/json; charset=utf-8";
     config.headers!["Access-Control-Allow-Origin"] = "*";
+    config.headers!["Authorization"] = "Bearer " + parsedAuthObj?.accessToken;
     return config;
   },
 
@@ -27,17 +30,13 @@ axiosApiInstance.interceptors.request.use(
   }
 );
 
-// content type
-// let authUser: any = (localStorage.getItem("authUser"));
 
-// intercepting to capture errors
 axiosApiInstance.interceptors.response.use(
   function (response: any) {
     return response.data ? response.data : response;
   },
   function (error: any) {
     console.log("error", error);
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
     let message: any;
     switch (error.response.status) {
       case 500:
@@ -58,20 +57,12 @@ axiosApiInstance.interceptors.response.use(
     return Promise.reject(message);
   }
 );
-/**
- * Sets the default authorization
- * @param {*} token
- */
+
 const setAuthorization = (token: any) => {
   axiosApiInstance.defaults.headers.common["Authorization"] = "Bearer " + token;
-  console.log("token", token);
 };
 
 class API {
-  /**
-   * Fetches data from given url
-   */
-
   GET = (url: any, params: any) => {
     let response: any;
 
@@ -95,27 +86,14 @@ class API {
 
     return response;
   };
-  /**
-   * post given data to url
-   */
+
   POST = (url: any, data: any) => {
-    return axiosApiInstance.post(baseURL + "/" + url, data, {
-      Headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
+    return axiosApiInstance.post(baseURL + "/" + url, data);
   };
-  /**
-   * Updates data
-   */
+
   PUT = (url: any, data: any) => {
     return axiosApiInstance.patch(baseURL + "/" + url, data);
   };
-  /**
-   * Delete
-   */
   DELETE = (url: any, config: any) => {
     return axiosApiInstance.delete(baseURL + "/" + url, { ...config });
   };

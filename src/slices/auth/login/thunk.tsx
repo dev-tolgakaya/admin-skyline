@@ -1,15 +1,15 @@
 import { getFirebaseBackend } from "helpers/firebase_helper";
 import { AuthService } from "../../../helpers/services/auth";
-import { setAuthorization } from "../../../helpers/api";
 import {
   loginSuccess,
   apiError,
   logoutUserSuccess,
   resetLoginFlag,
+  openLoading,
+  closeLoading,
 } from "./reducer";
 import { toast } from "react-toastify";
 import i18n from "../../../i18n";
-import { openLoading, closeLoading } from "./reducer";
 
 export const loginuser =
   (userData: any, history: any) => async (dispatch: any) => {
@@ -17,7 +17,7 @@ export const loginuser =
     try {
       const response = await AuthService.loginUser(userData);
       if (response) {
-        setAuthorization(response.accessToken);
+        dispatch(closeLoading());
         toast.success(i18n.t("ToastMessages.Auth.LoginSuccess"), {
           autoClose: 2000,
         });
@@ -26,10 +26,10 @@ export const loginuser =
         history("/dashboard");
       }
     } catch (error: any) {
+      dispatch(closeLoading());
       toast.error(error, { autoClose: 2000 });
       return error;
     }
-    dispatch(closeLoading());
   };
 
 export const logoutUser = (navigate: any) => async (dispatch: any) => {
@@ -40,11 +40,13 @@ export const logoutUser = (navigate: any) => async (dispatch: any) => {
       toast.success(i18n.t("ToastMessages.Auth.LogoutSucces"), {
         autoClose: 2000,
       });
+      dispatch(closeLoading());
       localStorage.removeItem("authUser");
       dispatch(logoutUserSuccess());
       navigate("/login");
     }
   } catch (error) {
+    dispatch(closeLoading());
     dispatch(apiError(error));
   }
   dispatch(closeLoading());

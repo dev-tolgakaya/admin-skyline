@@ -94,6 +94,7 @@
     "reactstrap": "^9.2.0",
     "recharts": "^2.1.13",
     "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
     "reselect": "^4.1.8",
     "simplebar-react": "^3.2.0",
     "swiper": "^9.0.3",

@@ -1,7 +1,4 @@
 import { combineReducers } from "redux";
-
-// Front
-// import LayoutReducer from "./layouts/reducer";
 import EcommerenceReducer from "./e-commerence/reducer";
 import CryptoReducer from "./crypto/reducer";
 import InvoiceReducer from "./invoices/reducer";

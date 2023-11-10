@@ -18,6 +18,9 @@ import AuthProtected from "Routes/AuthProtected";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
 import Spinners from "Components/Common/Spinner";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
+import appStore from "slices/store";
 
 // Import Firebase Configuration file
 // import { initFirebaseBackend } from "./helpers/firebase_helper";
@@ -54,6 +57,8 @@ const getLayout = (layoutType: any) => {
   return Layout;
 };
 
+const persistor = persistStore(appStore);
+
 function App() {
   const selectLeadData = createSelector(
     (state: any) => state.Layout,
@@ -63,14 +68,14 @@ function App() {
   const { loading } = useSelector((state: any) => state.Login);
 
   const Loading = useMemo(() => <Spinners />, [loading]);
-  if(loading) return Loading;
+  if (loading) return Loading;
 
   const Layout = getLayout(layoutTypes);
   return (
-    <React.Fragment>
-      <I18nextProvider i18n={i18n}>
+    <I18nextProvider i18n={i18n}>
+      <PersistGate loading={null} persistor={persistor}>
         <ToastContainer />
-        <Routes >
+        <Routes>
           {publicRoutes.map((route, idx) => (
             <Route
               path={route.path}
@@ -83,17 +88,15 @@ function App() {
               path={route.path}
               key={idx}
               element={
-                <React.Fragment>
-                  <AuthProtected>
-                    <Layout>{route.component}</Layout>
-                  </AuthProtected>
-                </React.Fragment>
+                <AuthProtected>
+                  <Layout>{route.component}</Layout>
+                </AuthProtected>
               }
             />
           ))}
         </Routes>
-      </I18nextProvider>
-    </React.Fragment>
+      </PersistGate>
+    </I18nextProvider>
   );
 }
 
