@@ -13,15 +13,16 @@ const getLoggedinUser = () => {
   }
 };
 
-const authObj = localStorage.getItem("authUser");
-const parsedAuthObj = authObj ? JSON.parse(authObj) : null;
-
 axiosApiInstance.interceptors.request.use(
   function (config) {
-    config.headers!["Accept-Language"] = "tr";
-    config.headers!["Content-Type"] = "application/json; charset=utf-8";
-    config.headers!["Access-Control-Allow-Origin"] = "*";
-    config.headers!["Authorization"] = "Bearer " + parsedAuthObj?.accessToken;
+    config.headers = config.headers || {};
+    config.headers["Accept-Language"] = "tr";
+    config.headers["Content-Type"] = "application/json; charset=utf-8";
+    config.headers["Access-Control-Allow-Origin"] = "*";
+    if (getLoggedinUser()) {
+      config.headers["Authorization"] =
+        "Bearer " + getLoggedinUser().accessToken;
+    }
     return config;
   },
 
@@ -29,7 +30,6 @@ axiosApiInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
 
 axiosApiInstance.interceptors.response.use(
   function (response: any) {
