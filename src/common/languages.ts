@@ -9,22 +9,22 @@ const languages : Object = {
         label : "Türkçe",
         flag :spain
     },
-    sp :{
-        label : "Spanish",
-        flag :spain
-    },
-    gr:{
-        label : "German",
-        flag :germany
-    },
-    it: {
-        label :"Italian",
-        flag:italy
-    },
-    rs:{
-        label:"Russia",
-        flag :russia
-    },
+    // sp :{
+    //     label : "Spanish",
+    //     flag :spain
+    // },
+    // gr:{
+    //     label : "German",
+    //     flag :germany
+    // },
+    // it: {
+    //     label :"Italian",
+    //     flag:italy
+    // },
+    // rs:{
+    //     label:"Russia",
+    //     flag :russia
+    // },
     en:{
         label:"English",
         flag :usflag

@@ -119,7 +119,7 @@ const Header = (props: any) => {
               </div>
             </form>
 
-            <Dropdown
+            {/* <Dropdown
               className="dropdown-mega d-none d-lg-block ms-2"
               isOpen={megaMenu}
               toggle={() => {
@@ -263,7 +263,7 @@ const Header = (props: any) => {
                   </Col>
                 </Row>
               </DropdownMenu>
-            </Dropdown>
+            </Dropdown> */}
           </div>
           <div className="d-flex">
             <div className="dropdown d-inline-block d-lg-none ms-2">
@@ -305,7 +305,7 @@ const Header = (props: any) => {
 
             <LanguageDropdown />
 
-            <Dropdown
+            {/* <Dropdown
               className="d-none d-lg-inline-block ms-1"
               isOpen={socialDrp}
               toggle={() => setsocialDrp(!socialDrp)}
@@ -361,7 +361,7 @@ const Header = (props: any) => {
                   </Row>
                 </div>
               </DropdownMenu>
-            </Dropdown>
+            </Dropdown> */}
 
             <div className="dropdown d-none d-lg-inline-block ms-1">
               <button
@@ -380,7 +380,7 @@ const Header = (props: any) => {
 
             <ProfileMenu />
 
-            <div className="dropdown d-inline-block">
+            {/* <div className="dropdown d-inline-block">
               <button
                 type="button"
                 className="btn header-item noti-icon right-bar-toggle"
@@ -388,7 +388,7 @@ const Header = (props: any) => {
               >
                 <i className="bx bx-cog bx-spin" />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>

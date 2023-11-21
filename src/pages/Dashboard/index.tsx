@@ -32,11 +32,11 @@ const Dashboard = () => {
     },
   ];
 
-  useEffect(() => {
-    setTimeout(() => {
-      setSubscribemodal(true);
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setSubscribemodal(true);
+  //   }, 2000);
+  // }, []);
 
   const [periodData, setPeriodData] = useState<any>([]);
   const [periodType, setPeriodType] = useState<string>("yearly");

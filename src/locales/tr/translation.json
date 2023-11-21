@@ -5,10 +5,13 @@
       "LogoutSucces": "Çıkış Başarılı"
     }
   },
+  "Menu":{
+    "Dashboard":"Ana Sayfa",
+    "Calendar":"Takvim"
+  },
   "LoginSuccess": "Giriş Başarılı",
   "Mega Menu": "Mega Menu",
   "Search": "Search",
-  "Menu": "Menu",
   "Dashboards": "Dashboards",
   "Dashboard": "Dashboard",
   "Default": "Default",

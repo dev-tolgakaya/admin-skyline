@@ -4,21 +4,18 @@ const axiosApiInstance = axios.create();
 
 const baseURL = process.env.REACT_APP_API_GATEWAY;
 
-const getLoggedinUser = () => {
-  const user = localStorage.getItem("authUser");
-  if (!user) {
-    return null;
-  } else {
-    return JSON.parse(user);
-  }
-};
+axiosApiInstance.defaults.headers.post["Content-Type"] = "application/json";
+
 
 axiosApiInstance.interceptors.request.use(
   function (config) {
-    config.headers = config.headers || {};
-    config.headers["Accept-Language"] = "tr";
-    config.headers["Content-Type"] = "application/json; charset=utf-8";
+    
+    config.headers["Content-Type"] = "application/json";
     config.headers["Access-Control-Allow-Origin"] = "*";
+    config.headers["Access-Control-Allow-Methods"] =  "GET,PUT,POST,DELETE,PATCH,OPTIONS";
+    config.headers["Access-Control-Allow-Credentials"] = "false";
+    config.headers["Access-Control-Allow-Headers"] = "Origin, X-Requested-With, Content-Type, Accept, Authorization";
+    config.headers["Accept"] = "application/json";
     if (getLoggedinUser()) {
       config.headers["Authorization"] =
         "Bearer " + getLoggedinUser().accessToken;
@@ -57,6 +54,15 @@ axiosApiInstance.interceptors.response.use(
     return Promise.reject(message);
   }
 );
+
+const getLoggedinUser = () => {
+  const user = localStorage.getItem("authUser");
+  if (!user) {
+    return null;
+  } else {
+    return JSON.parse(user);
+  }
+};
 
 const setAuthorization = (token: any) => {
   axiosApiInstance.defaults.headers.common["Authorization"] = "Bearer " + token;

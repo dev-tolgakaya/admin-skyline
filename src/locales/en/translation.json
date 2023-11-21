@@ -5,9 +5,12 @@
       "LogoutSucces": "Logged Out Successfulyy"
     }
   },
+  "Menu":{
+    "Dashboard":"Dashboard",
+    "Calendar":"Calendar"
+  },
   "Mega Menu": "Mega Menu",
   "Search": "Search",
-  "Menu": "Menu",
   "Dashboards": "Dashboards",
   "Dashboard": "Dashboard",
   "Default": "Default",
