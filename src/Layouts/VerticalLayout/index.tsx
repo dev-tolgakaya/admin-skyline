@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import RightSidebar from "Components/CommonForBoth/RightSidebar";
 import withRouter from "../../Components/Common/withRouter";
 import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from 'reselect';
@@ -72,7 +71,6 @@ const VerticalLayout = (props: any) => {
           {props.children}
           <Footer />
         </div>
-        <RightSidebar show={open} toggleCanvas={() => setOpen(!open)} />
       </div>
     </React.Fragment>
   );

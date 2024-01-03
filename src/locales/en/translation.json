@@ -5,9 +5,43 @@
       "LogoutSucces": "Logged Out Successfulyy"
     }
   },
-  "Menu":{
-    "Dashboard":"Dashboard",
-    "Calendar":"Calendar"
+  "Menu": {
+    "Dashboard": "Dashboard",
+    "Calendar": "Calendar"
+  },
+  "Login": {
+    "WelcomeBack": "Welcome Back !",
+    "SignintocontinuetoSkyLine": "Sign in to continue to SkyLine.",
+    "EmailOrUsername": "Email or Username",
+    "Password": "Password",
+    "RememberMe": "Remember Me",
+    "LogIn": "Log In",
+    "ForgotPassword": "Forgot Password ?",
+    "DontHaveAnAccount": "Don't have an account ?",
+    "SignUp": "Sign Up Now",
+    "SignInWith": "Sign in with"
+  },
+  "Register":{
+    "FreeRegister": "Free Register",  
+    "GetYourAccount": "Get your SkyLine account now.",
+    "Email":"Email",
+    "UserName": "Username",
+    "Password": "Password",
+    "Register":"Register",
+    "AlreadyHaveAnAccount": "Already have an account ?",
+    "LogIn": "Login"
+  },
+  "Header": {
+    "Profile": {
+      "Profile": "Profile",
+      "MyWallet": "My Wallet",
+      "Settings": "Settings",
+      "LockScreen": "Lock Screen",
+      "Logout": "Logout"
+    },
+    "SearchBar": {
+      "Search": "Search"
+    }
   },
   "Mega Menu": "Mega Menu",
   "Search": "Search",
@@ -58,7 +92,6 @@
   "Alert Email": "Alert Email",
   "Billing Email": "Billing Email",
   "Login 2": "Login 2",
-  "Register 2": "Register 2",
   "Recover Password": "Recover Password",
   "Recover Password 2": "Recover Password 2",
   "Lock Screen 2": "Lock Screen 2",
@@ -75,8 +108,6 @@
   "User List": "User List",
   "Profile": "Profile",
   "Authentication": "Authentication",
-  "Login": "Login",
-  "Register": "Register",
   "Forget Password": "Forget Password",
   "Utility": "Utility",
   "Starter Page": "Starter Page",

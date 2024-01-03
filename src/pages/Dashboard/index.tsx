@@ -1,24 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Card, CardBody, Col, Container, Input, Modal, ModalHeader, Row, ModalBody, CardTitle, InputGroup, Nav, NavItem, NavLink } from 'reactstrap';
-import Activity from './Activity';
-import MonthlyEarning from './MonthlyEarning';
-import SocialSource from './SocialSource';
-import TopCities from './TopCities';
-import Welcomeback from './Welcomeback';
+import React, { useEffect, useState } from "react";
+import {
+  Button,
+  Card,
+  CardBody,
+  Col,
+  Container,
+  Input,
+  Modal,
+  ModalHeader,
+  Row,
+  ModalBody,
+  CardTitle,
+  InputGroup,
+  Nav,
+  NavItem,
+  NavLink,
+} from "reactstrap";
+import Activity from "./Activity";
+import MonthlyEarning from "./MonthlyEarning";
+import SocialSource from "./SocialSource";
+import TopCities from "./TopCities";
+import Welcomeback from "./Welcomeback";
 import LatestTranaction from "./LatestTranaction";
 import classNames from "classnames";
 
 //import Charts
 import StackedColumnChart from "./StackedColumnChart";
 import { useSelector, useDispatch } from "react-redux";
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 
-import { getChartData as onGetChartData } from '../../slices/dashboards/thunk';
+import { getChartData as onGetChartData } from "../../slices/dashboards/thunk";
 
-import Breadcrumb from 'Components/Common/Breadcrumb';
+import Breadcrumb from "Components/Common/Breadcrumb";
+import TablePagination from "Components/uikits/tablePagination";
+import { API } from "helpers/api";
 
 const Dashboard = () => {
-  document.title = "Dashboards | Skote - React Admin & Dashboard Template";
+  const api = new API();
 
   const [subscribemodal, setSubscribemodal] = useState<boolean>(false);
 
@@ -32,19 +50,20 @@ const Dashboard = () => {
     },
   ];
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setSubscribemodal(true);
-  //   }, 2000);
-  // }, []);
+  useEffect(() => {
+    // setTimeout(() => {
+    //   setSubscribemodal(true);
+    // }, 2000);
+    api.POST("/getUserList", {});
+  }, []);
 
   const [periodData, setPeriodData] = useState<any>([]);
   const [periodType, setPeriodType] = useState<string>("yearly");
 
- const selectProperties = createSelector(
+  const selectProperties = createSelector(
     (state: any) => state.dashboard,
     (dashboard) => ({
-      chartsData: dashboard.dashboardChartData
+      chartsData: dashboard.dashboardChartData,
     })
   );
 
@@ -66,6 +85,7 @@ const Dashboard = () => {
 
   return (
     <React.Fragment>
+      <TablePagination />
       <div className="page-content">
         <Container fluid>
           <Breadcrumb title="Dashboards" breadcrumbItem="Dashboards" />
@@ -83,12 +103,19 @@ const Dashboard = () => {
                       <CardBody>
                         <div className="d-flex">
                           <div className="flex-grow-1">
-                            <p className="text-muted fw-medium"> {report.title} </p>
+                            <p className="text-muted fw-medium">
+                              {" "}
+                              {report.title}{" "}
+                            </p>
                             <h4 className="mb-0">{report.description}</h4>
                           </div>
                           <div className="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
                             <span className="avatar-title rounded-circle bg-primary">
-                              <i className={"bx " + report.iconClass + " font-size-24"} ></i>
+                              <i
+                                className={
+                                  "bx " + report.iconClass + " font-size-24"
+                                }
+                              ></i>
                             </span>
                           </div>
                         </div>
@@ -101,35 +128,66 @@ const Dashboard = () => {
               <Card>
                 <CardBody>
                   <div className="d-sm-flex flex-wrap">
-                    <CardTitle tag="h4" className="mb-4">Email Sent</CardTitle>
+                    <CardTitle tag="h4" className="mb-4">
+                      Email Sent
+                    </CardTitle>
                     <div className="ms-auto">
                       <Nav pills>
                         <NavItem>
-                          <NavLink href="#" className={classNames({ active: periodType === "weekly" }, "nav-link")}
+                          <NavLink
+                            href="#"
+                            className={classNames(
+                              { active: periodType === "weekly" },
+                              "nav-link"
+                            )}
                             onClick={() => {
                               onChangeChartPeriod("weekly");
                             }}
-                            id="one_month">Week</NavLink>
+                            id="one_month"
+                          >
+                            Week
+                          </NavLink>
                         </NavItem>
                         <NavItem>
-                          <NavLink href="#" className={classNames({ active: periodType === "monthly" }, "nav-link")}
+                          <NavLink
+                            href="#"
+                            className={classNames(
+                              { active: periodType === "monthly" },
+                              "nav-link"
+                            )}
                             onClick={() => {
                               onChangeChartPeriod("monthly");
                             }}
-                            id="one_month" > Month </NavLink>
+                            id="one_month"
+                          >
+                            {" "}
+                            Month{" "}
+                          </NavLink>
                         </NavItem>
                         <NavItem>
-                          <NavLink href="#" className={classNames({ active: periodType === "yearly" }, "nav-link")}
+                          <NavLink
+                            href="#"
+                            className={classNames(
+                              { active: periodType === "yearly" },
+                              "nav-link"
+                            )}
                             onClick={() => {
                               onChangeChartPeriod("yearly");
                             }}
-                            id="one_month" > Year  </NavLink>
+                            id="one_month"
+                          >
+                            {" "}
+                            Year{" "}
+                          </NavLink>
                         </NavItem>
                       </Nav>
                     </div>
                   </div>
                   {/* <div className="clearfix"></div> */}
-                  <StackedColumnChart periodData={periodData} dataColors='["--bs-primary", "--bs-warning", "--bs-success"]' />
+                  <StackedColumnChart
+                    periodData={periodData}
+                    dataColors='["--bs-primary", "--bs-warning", "--bs-success"]'
+                  />
                 </CardBody>
               </Card>
             </Col>
@@ -152,12 +210,24 @@ const Dashboard = () => {
             </Col>
           </Row>
         </Container>
-      </div >
+      </div>
 
       {/* subscribe ModalHeader */}
-      <Modal isOpen={subscribemodal} autoFocus={true} centered toggle={() => { setSubscribemodal(!subscribemodal) }}>
+      <Modal
+        isOpen={subscribemodal}
+        autoFocus={true}
+        centered
+        toggle={() => {
+          setSubscribemodal(!subscribemodal);
+        }}
+      >
         <div>
-          <ModalHeader className="border-bottom-0" toggle={() => { setSubscribemodal(!subscribemodal) }} />
+          <ModalHeader
+            className="border-bottom-0"
+            toggle={() => {
+              setSubscribemodal(!subscribemodal);
+            }}
+          />
         </div>
         <ModalBody>
           <div className="text-center mb-4">
@@ -175,17 +245,23 @@ const Dashboard = () => {
                 </p>
 
                 <InputGroup className="rounded bg-light">
-                  <Input type="email" className="bg-transparent border-0" placeholder="Enter Email address" />
-                  <Button color="primary" type="button" id="button-addon2"> <i className="bx bxs-paper-plane"></i> </Button>
+                  <Input
+                    type="email"
+                    className="bg-transparent border-0"
+                    placeholder="Enter Email address"
+                  />
+                  <Button color="primary" type="button" id="button-addon2">
+                    {" "}
+                    <i className="bx bxs-paper-plane"></i>{" "}
+                  </Button>
                 </InputGroup>
               </Col>
             </Row>
           </div>
         </ModalBody>
-      </Modal >
-
-    </React.Fragment >
+      </Modal>
+    </React.Fragment>
   );
-}
+};
 
 export default Dashboard;

@@ -51,9 +51,6 @@ import { createSelector } from 'reselect';
 
 const Calender = (props: any) => {
 
-  //meta title
-  document.title = "Full Calendar | Skote - React Admin & Dashboard Template";
-
   const dispatch = useDispatch<any>();
 
   const [event, setEvent] = useState<any>({});

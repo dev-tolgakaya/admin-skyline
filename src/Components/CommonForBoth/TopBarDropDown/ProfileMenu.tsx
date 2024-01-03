@@ -48,7 +48,6 @@ const ProfileMenu = (props: any) => {
   }, [success]);
 
   return (
-    <React.Fragment>
       <Dropdown
         isOpen={menu}
         toggle={() => setMenu(!menu)}
@@ -73,26 +72,26 @@ const ProfileMenu = (props: any) => {
           <DropdownItem tag="a" href={process.env.PUBLIC_URL + "/profile"}>
             {" "}
             <i className="bx bx-user font-size-16 align-middle me-1" />
-            {props.t("Profile")}{" "}
+            {props.t("Header.Profile.Profile")}{" "}
           </DropdownItem>
           <DropdownItem
             tag="a"
             href={process.env.PUBLIC_URL + "/crypto-wallet"}
           >
             <i className="bx bx-wallet font-size-16 align-middle me-1" />
-            {props.t("My Wallet")}
+            {props.t("Header.Profile.MyWallet")}
           </DropdownItem>
           <DropdownItem tag="a" href="#">
             <span className="badge bg-success float-end">11</span>
             <i className="bx bx-wrench font-size-16 align-middle me-1" />
-            {props.t("Settings")}
+            {props.t("Header.Profile.Settings")}
           </DropdownItem>
           <DropdownItem
             tag="a"
             href={process.env.PUBLIC_URL + "/auth-lock-screen"}
           >
             <i className="bx bx-lock-open font-size-16 align-middle me-1" />
-            {props.t("Lock screen")}
+            {props.t("Header.Profile.LockScreen")}
           </DropdownItem>
           <div className="dropdown-divider" />
           <DropdownItem
@@ -100,11 +99,10 @@ const ProfileMenu = (props: any) => {
             onClick={() => dispatch(logoutUser(navigate))}
           >
             <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" />
-            <span>{props.t("Logout")}</span>
+            <span>{props.t("Header.Profile.Logout")}</span>
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>
-    </React.Fragment>
   );
 };
 

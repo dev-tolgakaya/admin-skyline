@@ -1,34 +1,15 @@
-import spain from "../assets/images/flags/spain.jpg";
-import germany from "../assets/images/flags/germany.jpg";
-import italy from "../assets/images/flags/italy.jpg";
-import russia from "../assets/images/flags/russia.jpg";
-import usflag from "../assets/images/flags/us.jpg"
+import turkish from "../assets/images/flags/turkish.jpg";
+import usflag from "../assets/images/flags/us.jpg";
 
-const languages : Object = {
-    tr :{
-        label : "Türkçe",
-        flag :spain
-    },
-    // sp :{
-    //     label : "Spanish",
-    //     flag :spain
-    // },
-    // gr:{
-    //     label : "German",
-    //     flag :germany
-    // },
-    // it: {
-    //     label :"Italian",
-    //     flag:italy
-    // },
-    // rs:{
-    //     label:"Russia",
-    //     flag :russia
-    // },
-    en:{
-        label:"English",
-        flag :usflag
-    }
-}
+const languages: Object = {
+  tr: {
+    label: "Türkçe",
+    flag: turkish,
+  },
+  en: {
+    label: "English",
+    flag: usflag,
+  },
+};
 
-export default languages
+export default languages;

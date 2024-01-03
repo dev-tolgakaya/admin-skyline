@@ -5,9 +5,43 @@
       "LogoutSucces": "Çıkış Başarılı"
     }
   },
-  "Menu":{
-    "Dashboard":"Ana Sayfa",
-    "Calendar":"Takvim"
+  "Menu": {
+    "Dashboard": "Ana Sayfa",
+    "Calendar": "Takvim"
+  },
+  "Login": {
+    "WelcomeBack": "Hoşgeldiniz !",
+    "SignintocontinuetoSkyLine": "Lütfen SkyLine'a devam etmek için oturum açın.",
+    "EmailOrUsername": "E-posta veya Kullanıcı Adı",
+    "Password": "Şifre",
+    "RememberMe": "Beni Hatırla",
+    "LogIn": "Giriş Yap",
+    "ForgotPassword": "Şifremi Unuttum",
+    "DontHaveAnAccount": "Hesabınız Yok mu?",
+    "SignUp": "Kayıt Ol",
+    "SignInWith": "Veya şununla giriş yap"
+  },
+  "Register":{
+    "FreeRegister": "Ücretsiz Kayıt Ol",  
+    "GetYourAccount": "SkyLine hesabınızı alın.",
+    "Email": "E-posta",
+    "UserName": "Kullanıcı Adı",
+    "Password": "Şifre",
+    "Register":"Kayıt Ol",
+    "AlreadyHaveAnAccount":"Zaten bir hesabınız var mı?",
+    "LogIn": "Giriş Yap"
+  },
+  "Header": {
+    "Profile": {
+      "Profile": "Profil",
+      "MyWallet": "Cüzdanım",
+      "Settings": "Ayarlar",
+      "LockScreen": "Kilit Ekranı",
+      "Logout": "Çıkış"
+    },
+    "SearchBar": {
+      "Search": "Arama"
+    }
   },
   "LoginSuccess": "Giriş Başarılı",
   "Mega Menu": "Mega Menu",
@@ -59,7 +93,6 @@
   "Alert Email": "Alert Email",
   "Billing Email": "Billing Email",
   "Login 2": "Login 2",
-  "Register 2": "Register 2",
   "Recover Password": "Recover Password",
   "Recover Password 2": "Recover Password 2",
   "Lock Screen 2": "Lock Screen 2",
@@ -76,8 +109,6 @@
   "User List": "User List",
   "Profile": "Profile",
   "Authentication": "Authentication",
-  "Login": "Login",
-  "Register": "Register",
   "Forget Password": "Forget Password",
   "Utility": "Utility",
   "Starter Page": "Starter Page",

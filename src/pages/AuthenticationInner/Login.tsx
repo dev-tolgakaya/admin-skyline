@@ -2,7 +2,17 @@ import React, { useState } from "react";
 
 // Redux
 import { Link } from "react-router-dom";
-import { Row, Col, CardBody, Card, Container, Form, Input, Label, FormFeedback } from "reactstrap";
+import {
+  Row,
+  Col,
+  CardBody,
+  Card,
+  Container,
+  Form,
+  Input,
+  Label,
+  FormFeedback,
+} from "reactstrap";
 
 // Formik validation
 import * as Yup from "yup";
@@ -18,29 +28,30 @@ import lightlogo from "../../assets/images/logo-light.svg";
 import { loginuser } from "slices/auth/login/thunk";
 import withRouter from "Components/Common/withRouter";
 
+import validations from "helpers/validations";
+
 const Login = (props: any) => {
   const [show, setShow] = useState(false);
   const dispatch: any = useDispatch();
 
-  //meta title
-  document.title = "Login | Skote - React Admin & Dashboard Template";
+  console.log("props", props);
 
-  // Form validation 
-  const validation : any = useFormik({
+  // Form validation
+  const validation: any = useFormik({
     // enableReinitialize : use this flag when initial values needs to be changed
     enableReinitialize: true,
 
     initialValues: {
-      email: "admin@themesbrand.com" || '',
-      password: "123456" || '',
+      email: "admin@themesbrand.com" || "",
+      password: "123456" || "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().required("Please Enter Your email"),
-      password: Yup.string().required("Please Enter Your Password"),
+      email: validations.form.email,
+      password: validations.form.password,
     }),
     onSubmit: (values: any) => {
-      dispatch(loginuser(values, props.router.navigate));
-    }
+      // dispatch(loginuser(values, props.router.navigate));
+    },
   });
   return (
     <React.Fragment>
@@ -54,7 +65,7 @@ const Login = (props: any) => {
                     <Col className="col-7">
                       <div className="text-primary p-4">
                         <h5 className="text-primary">Welcome Back !</h5>
-                        <p>Sign in to continue to Skote.</p>
+                        <p>Sign in to continue to SkyLine.</p>
                       </div>
                     </Col>
                     <Col className="col-5 align-self-end">
@@ -90,7 +101,8 @@ const Login = (props: any) => {
                     </Link>
                   </div>
                   <div className="p-2">
-                    <Form className="form-horizontal"
+                    <Form
+                      className="form-horizontal"
                       onSubmit={(e) => {
                         e.preventDefault();
                         validation.handleSubmit();
@@ -108,11 +120,15 @@ const Login = (props: any) => {
                           onBlur={validation.handleBlur}
                           value={validation.values.email || ""}
                           invalid={
-                            validation.touched.email && validation.errors.email ? true : false
+                            validation.touched.email && validation.errors.email
+                              ? true
+                              : false
                           }
                         />
                         {validation.touched.email && validation.errors.email ? (
-                          <FormFeedback type="invalid">{validation.errors.email}</FormFeedback>
+                          <FormFeedback type="invalid">
+                            {validation.errors.email}
+                          </FormFeedback>
                         ) : null}
                       </div>
 
@@ -127,14 +143,26 @@ const Login = (props: any) => {
                             onChange={validation.handleChange}
                             onBlur={validation.handleBlur}
                             invalid={
-                              validation.touched.password && validation.errors.password ? true : false
+                              validation.touched.password &&
+                              validation.errors.password
+                                ? true
+                                : false
                             }
                           />
-                          <button onClick={() => setShow(!show)} className="btn btn-light " type="button" id="password-addon">
-                            <i className="mdi mdi-eye-outline"></i></button>
+                          <button
+                            onClick={() => setShow(!show)}
+                            className="btn btn-light "
+                            type="button"
+                            id="password-addon"
+                          >
+                            <i className="mdi mdi-eye-outline"></i>
+                          </button>
                         </div>
-                        {validation.touched.password && validation.errors.password ? (
-                          <FormFeedback type="invalid">{validation.errors.password}</FormFeedback>
+                        {validation.touched.password &&
+                        validation.errors.password ? (
+                          <FormFeedback type="invalid">
+                            {validation.errors.password}
+                          </FormFeedback>
                         ) : null}
                       </div>
 
@@ -205,10 +233,7 @@ const Login = (props: any) => {
               <div className="mt-5 text-center">
                 <p>
                   Don&apos;t have an account ?{" "}
-                  <Link
-                    to="pages-register"
-                    className="fw-medium text-primary"
-                  >
+                  <Link to="pages-register" className="fw-medium text-primary">
                     {" "}
                     Signup now{" "}
                   </Link>{" "}

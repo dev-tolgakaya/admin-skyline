@@ -26,7 +26,6 @@ import logoLightSvg from "../../assets/images/logo-light.svg";
 import { withTranslation } from "react-i18next";
 
 const Header = (props: any) => {
-
   const [search, setsearch] = useState(false);
   const [megaMenu, setmegaMenu] = useState(false);
   const [socialDrp, setsocialDrp] = useState(false);
@@ -80,46 +79,44 @@ const Header = (props: any) => {
     }
   }
 
-
   return (
-    <React.Fragment>
-      <header id="page-topbar">
-        <div className="navbar-header">
-          <div className="d-flex">
-            <div className="navbar-brand-box d-lg-none d-md-block">
-              <Link to="/" className="logo logo-dark">
-                <span className="logo-sm">
-                  <img src={logo} alt="" height="22" />
-                </span>
-              </Link>
+    <header id="page-topbar">
+      <div className="navbar-header">
+        <div className="d-flex">
+          <div className="navbar-brand-box d-lg-none d-md-block">
+            <Link to="/" className="logo logo-dark">
+              <span className="logo-sm">
+                <img src={logo} alt="" height="22" />
+              </span>
+            </Link>
 
-              <Link to="/" className="logo logo-light">
-                <span className="logo-sm">
-                  <img src={logoLightSvg} alt="" height="22" />
-                </span>
-              </Link>
+            <Link to="/" className="logo logo-light">
+              <span className="logo-sm">
+                <img src={logoLightSvg} alt="" height="22" />
+              </span>
+            </Link>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => tToggle()}
+            className="btn btn-sm px-3 font-size-16 header-item "
+            id="vertical-menu-btn"
+          >
+            <i className="fa fa-fw fa-bars" />
+          </button>
+          <form className="app-search d-none d-lg-block">
+            <div className="position-relative">
+              <input
+                type="text"
+                className="form-control"
+                placeholder={props.t("Header.SearchBar.Search") + "..."}
+              />
+              <span className="bx bx-search-alt" />
             </div>
+          </form>
 
-            <button
-              type="button"
-              onClick={() => tToggle()}
-              className="btn btn-sm px-3 font-size-16 header-item "
-              id="vertical-menu-btn"
-            >
-              <i className="fa fa-fw fa-bars" />
-            </button>
-            <form className="app-search d-none d-lg-block">
-              <div className="position-relative">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder={props.t("Search") + "..."}
-                />
-                <span className="bx bx-search-alt" />
-              </div>
-            </form>
-
-            {/* <Dropdown
+          {/* <Dropdown
               className="dropdown-mega d-none d-lg-block ms-2"
               isOpen={megaMenu}
               toggle={() => {
@@ -264,48 +261,48 @@ const Header = (props: any) => {
                 </Row>
               </DropdownMenu>
             </Dropdown> */}
-          </div>
-          <div className="d-flex">
-            <div className="dropdown d-inline-block d-lg-none ms-2">
-              <button
-                onClick={() => setsearch(!search)}
-                type="button"
-                className="btn header-item noti-icon "
-                id="page-header-search-dropdown"
-              >
-                <i className="mdi mdi-magnify" />
-              </button>
-              <div
-                className={
-                  search
-                    ? "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 show"
-                    : "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                }
-                aria-labelledby="page-header-search-dropdown"
-              >
-                <form className="p-3">
-                  <div className="form-group m-0">
-                    <div className="input-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Search ..."
-                        aria-label="Recipient's username"
-                      />
-                      <div className="input-group-append">
-                        <button className="btn btn-primary" type="submit">
-                          <i className="mdi mdi-magnify" />
-                        </button>
-                      </div>
+        </div>
+        <div className="d-flex">
+          <div className="dropdown d-inline-block d-lg-none ms-2">
+            <button
+              onClick={() => setsearch(!search)}
+              type="button"
+              className="btn header-item noti-icon "
+              id="page-header-search-dropdown"
+            >
+              <i className="mdi mdi-magnify" />
+            </button>
+            <div
+              className={
+                search
+                  ? "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 show"
+                  : "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+              }
+              aria-labelledby="page-header-search-dropdown"
+            >
+              <form className="p-3">
+                <div className="form-group m-0">
+                  <div className="input-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Search ..."
+                      aria-label="Recipient's username"
+                    />
+                    <div className="input-group-append">
+                      <button className="btn btn-primary" type="submit">
+                        <i className="mdi mdi-magnify" />
+                      </button>
                     </div>
                   </div>
-                </form>
-              </div>
+                </div>
+              </form>
             </div>
+          </div>
 
-            <LanguageDropdown />
+          <LanguageDropdown />
 
-            {/* <Dropdown
+          {/* <Dropdown
               className="d-none d-lg-inline-block ms-1"
               isOpen={socialDrp}
               toggle={() => setsocialDrp(!socialDrp)}
@@ -363,24 +360,24 @@ const Header = (props: any) => {
               </DropdownMenu>
             </Dropdown> */}
 
-            <div className="dropdown d-none d-lg-inline-block ms-1">
-              <button
-                type="button"
-                onClick={() => {
-                  toggleFullscreen();
-                }}
-                className="btn header-item noti-icon "
-                data-toggle="fullscreen"
-              >
-                <i className="bx bx-fullscreen" />
-              </button>
-            </div>
+          <div className="dropdown d-none d-lg-inline-block ms-1">
+            <button
+              type="button"
+              onClick={() => {
+                toggleFullscreen();
+              }}
+              className="btn header-item noti-icon "
+              data-toggle="fullscreen"
+            >
+              <i className="bx bx-fullscreen" />
+            </button>
+          </div>
 
-            <NotificationDropDown />
+          <NotificationDropDown />
 
-            <ProfileMenu />
+          <ProfileMenu />
 
-            {/* <div className="dropdown d-inline-block">
+          {/* <div className="dropdown d-inline-block">
               <button
                 type="button"
                 className="btn header-item noti-icon right-bar-toggle"
@@ -389,12 +386,10 @@ const Header = (props: any) => {
                 <i className="bx bx-cog bx-spin" />
               </button>
             </div> */}
-          </div>
         </div>
-      </header>
-    </React.Fragment>
+      </div>
+    </header>
   );
 };
-
 
 export default withTranslation()(Header);

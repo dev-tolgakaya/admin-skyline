@@ -2,7 +2,6 @@ import React, { useState, useMemo, useCallback, useEffect } from "react";
 import withRouter from "../../Components/Common/withRouter";
 
 import { Button, Card, CardBody, CardTitle, } from "reactstrap";
-import EcommerceOrdersModal from "../Ecommerce/EcommerceOrders/EcommerceOrdersModal";
 
 import {
   OrderId,
@@ -127,7 +126,6 @@ const LatestTranaction = () => {
 
   return (
     <React.Fragment>
-      <EcommerceOrdersModal isOpen={modal1} toggle={toggleViewModal} editDetails={editDetails} />
       <Card>
         <CardBody>
           <CardTitle tag="h4" className="mb-4">Latest Transaction</CardTitle>

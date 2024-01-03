@@ -3,7 +3,6 @@ import "./App.css";
 import { authProtectedRoutes, publicRoutes } from "./Routes/allRoutes";
 import { Route, Routes } from "react-router-dom";
 import VerticalLayout from "./Layouts/VerticalLayout";
-import HorizotanlLayout from "./Layouts/HorizontalLayout/index";
 import "./assets/scss/theme.scss";
 import NonAuthLayout from "./Layouts/NonLayout";
 import { ToastContainer } from "react-toastify";
@@ -47,9 +46,6 @@ const getLayout = (layoutType: any) => {
   switch (layoutType) {
     case LAYOUT_TYPES.VERTICAL:
       Layout = VerticalLayout;
-      break;
-    case LAYOUT_TYPES.HORIZONTAL:
-      Layout = HorizotanlLayout;
       break;
     default:
       break;

@@ -1,5 +1,16 @@
 import React, { useEffect } from "react";
-import { Row, Col, CardBody, Card, Alert, Container, Input, Label, Form, FormFeedback } from "reactstrap";
+import {
+  Row,
+  Col,
+  CardBody,
+  Card,
+  Alert,
+  Container,
+  Input,
+  Label,
+  Form,
+  FormFeedback,
+} from "reactstrap";
 
 // Formik Validation
 import * as Yup from "yup";
@@ -12,18 +23,15 @@ import { registerUser, apiError } from "../../slices/thunk";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Link } from "react-router-dom";
+import withRouter from "Components/Common/withRouter";
 
 // import images
 import profileImg from "../../assets/images/profile-img.png";
 import logoImg from "../../assets/images/logo.svg";
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 
-
-const Register = props => {
-
-  //meta title
-  document.title = "Register | Skote - React Admin & Dashboard Template";
-
+const Register = (props: any) => {
+  const { translation } = props?.router;
   const dispatch = useDispatch<any>();
 
   const validation = useFormik({
@@ -31,9 +39,9 @@ const Register = props => {
     enableReinitialize: true,
 
     initialValues: {
-      email: '',
-      username: '',
-      password: '',
+      email: "",
+      username: "",
+      password: "",
     },
     validationSchema: Yup.object({
       email: Yup.string().required("Please Enter Your Email"),
@@ -42,10 +50,10 @@ const Register = props => {
     }),
     onSubmit: (values) => {
       dispatch(registerUser(values));
-    }
+    },
   });
 
- const selectProperties = createSelector(
+  const selectProperties = createSelector(
     (state: any) => state.Account,
     (account) => ({
       user: account.user,
@@ -76,8 +84,10 @@ const Register = props => {
                   <Row>
                     <Col className="col-7">
                       <div className="text-primary p-4">
-                        <h5 className="text-primary">Free Register</h5>
-                        <p>Get your free Skote account now.</p>
+                        <h5 className="text-primary">
+                          {translation.t("Register.FreeRegister")}
+                        </h5>
+                        <p> {translation.t("Register.GetYourAccount")}</p>
                       </div>
                     </Col>
                     <Col className="col-5 align-self-end">
@@ -120,57 +130,80 @@ const Register = props => {
                       ) : null}
 
                       <div className="mb-3">
-                        <Label className="form-label">Email</Label>
+                        <Label className="form-label">
+                          {" "}
+                          {translation.t("Register.Email")}
+                        </Label>
                         <Input
                           id="email"
                           name="email"
                           className="form-control"
-                          placeholder="Enter email"
+                          placeholder={translation.t("Register.Email")}
                           type="email"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
                           value={validation.values.email || ""}
                           invalid={
-                            validation.touched.email && validation.errors.email ? true : false
+                            validation.touched.email && validation.errors.email
+                              ? true
+                              : false
                           }
                         />
                         {validation.touched.email && validation.errors.email ? (
-                          <FormFeedback type="invalid">{validation.errors.email}</FormFeedback>
+                          <FormFeedback type="invalid">
+                            {validation.errors.email}
+                          </FormFeedback>
                         ) : null}
                       </div>
 
                       <div className="mb-3">
-                        <Label className="form-label">Username</Label>
+                        <Label className="form-label">
+                          {translation.t("Register.UserName")}
+                        </Label>
                         <Input
                           name="username"
                           type="text"
-                          placeholder="Enter username"
+                          placeholder={translation.t("Register.UserName")}
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
                           value={validation.values.username || ""}
                           invalid={
-                            validation.touched.username && validation.errors.username ? true : false
+                            validation.touched.username &&
+                            validation.errors.username
+                              ? true
+                              : false
                           }
                         />
-                        {validation.touched.username && validation.errors.username ? (
-                          <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
+                        {validation.touched.username &&
+                        validation.errors.username ? (
+                          <FormFeedback type="invalid">
+                            {validation.errors.username}
+                          </FormFeedback>
                         ) : null}
                       </div>
                       <div className="mb-3">
-                        <Label className="form-label">Password</Label>
+                        <Label className="form-label">
+                          {translation.t("Register.Password")}
+                        </Label>
                         <Input
                           name="password"
                           type="password"
-                          placeholder="Enter Password"
+                          placeholder={translation.t("Register.Password")}
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
                           value={validation.values.password || ""}
                           invalid={
-                            validation.touched.password && validation.errors.password ? true : false
+                            validation.touched.password &&
+                            validation.errors.password
+                              ? true
+                              : false
                           }
                         />
-                        {validation.touched.password && validation.errors.password ? (
-                          <FormFeedback type="invalid">{validation.errors.password}</FormFeedback>
+                        {validation.touched.password &&
+                        validation.errors.password ? (
+                          <FormFeedback type="invalid">
+                            {validation.errors.password}
+                          </FormFeedback>
                         ) : null}
                       </div>
 
@@ -179,17 +212,17 @@ const Register = props => {
                           className="btn btn-primary btn-block "
                           type="submit"
                         >
-                          Register
+                            {translation.t("Register.Register")}
                         </button>
                       </div>
 
                       <div className="mt-4 text-center">
-                        <p className="mb-0">
+                        {/* <p className="mb-0">
                           By registering you agree to the Skote{" "}
                           <Link to="#" className="text-primary">
                             Terms of Use
                           </Link>
-                        </p>
+                        </p> */}
                       </div>
                     </Form>
                   </div>
@@ -197,15 +230,15 @@ const Register = props => {
               </Card>
               <div className="mt-5 text-center">
                 <p>
-                  Already have an account ?{" "}
+                  {translation.t("Register.AlreadyHaveAnAccount")}{" "}
                   <Link to="/login" className="font-weight-medium text-primary">
                     {" "}
-                    Login
+                    {translation.t("Register.LogIn")}
                   </Link>{" "}
                 </p>
                 <p>
-                  © {new Date().getFullYear()} Skote. Crafted with{" "}
-                  <i className="mdi mdi-heart text-danger" /> by Themesbrand
+                  © {new Date().getFullYear()} SkyLine.{" "}
+                  <i className="mdi mdi-heart text-danger" /> softrobotics
                 </p>
               </div>
             </Col>
@@ -216,4 +249,4 @@ const Register = props => {
   );
 };
 
-export default Register;
+export default withRouter(Register);
