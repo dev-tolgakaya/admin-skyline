@@ -1,38 +1,28 @@
 import axios from "axios";
-import mockData from "./mockData";
-const axiosApiInstance = axios.create();
 
-const mockDataList = (process.env.REACT_APP_MOCK_DATA || "").split(",");
-const baseURL = process.env.REACT_APP_API_GATEWAY;
+const apiURL = process.env.REACT_APP_API_GATEWAY;
 
-axiosApiInstance.defaults.headers.post["Content-Type"] = "application/json";
-
-const getMockData = (url: string) => {
-  let result: any = null;
-  mockDataList
-    .filter((p) => p)
-    .map((path) => {
-      if (url.includes(path)) {
-        result = mockData[path] || { error: "Mock data not found!" };
-      }
-    });
-  return result;
+const getToken = (): string | undefined => {
+  return (
+    JSON.parse(localStorage.getItem("authUser") || "{}")?.accessToken || null
+  );
 };
 
-axiosApiInstance.interceptors.request.use(
+export const axiosInstance = axios.create({
+  baseURL: apiURL,
+  timeout: 60000, // 60 seconds timeout for all requests
+});
+
+axiosInstance.interceptors.request.use(
   function (config) {
-    config.headers["Content-Type"] = "application/json";
-    config.headers["Access-Control-Allow-Origin"] = "*";
-    config.headers["Access-Control-Allow-Methods"] =
-      "GET,PUT,POST,DELETE,PATCH,OPTIONS";
-    config.headers["Access-Control-Allow-Credentials"] = "false";
-    config.headers["Access-Control-Allow-Headers"] =
-      "Origin, X-Requested-With, Content-Type, Accept, Authorization";
-    config.headers["Accept"] = "application/json";
-    if (getLoggedinUser()) {
-      config.headers["Authorization"] =
-        "Bearer " + getLoggedinUser().accessToken;
+    const token = getToken();
+
+    if (!!token) {
+      config.headers!["Authorization"] = "Bearer " + token;
     }
+    config.headers!["Accept-Language"] = "tr";
+    config.headers!["Content-Type"] = "application/json; charset=utf-8";
+    config.headers!["Access-Control-Allow-Origin"] = "*";
     return config;
   },
 
@@ -41,100 +31,41 @@ axiosApiInstance.interceptors.request.use(
   }
 );
 
-axiosApiInstance.interceptors.response.use(
-  function (response: any) {
-    return response.data ? response.data : response;
-  },
-  function (error: any) {
-    console.log("error", error);
-    let message: any;
-    switch (error.response.status) {
-      case 500:
-        message = "Internal Server Error";
-        break;
-      case 401:
-        message = "Invalid credentials";
-        break;
-      case 403:
-        message = "Hatalı kullanıcı adı veya şifre";
-        break;
-      case 404:
-        message = "Sorry! the data you are looking for could not be found";
-        break;
-      default:
-        message = error.message || error;
-    }
-    return Promise.reject(message);
-  }
-);
-
-const getLoggedinUser = () => {
-  const user = localStorage.getItem("authUser");
-  if (!user) {
-    return null;
-  } else {
-    return JSON.parse(user);
-  }
-};
-
-const setAuthorization = (token: any) => {
-  axiosApiInstance.defaults.headers.common["Authorization"] = "Bearer " + token;
-};
-
-class API {
-  checkMockData(url: string) {
-    let mockDataObject = getMockData(url);
-    if (mockDataObject) {
-      if (mockDataObject.error) return null;
-      return mockDataObject;
-    }
-  }
-  GET = (url: any, params: any) => {
-    let response: any;
-
-    if (this.checkMockData(url)) {
-      response = this.checkMockData(url);
-    } else {
-      let paramKeys: any = [];
-
-      if (params) {
-        Object.keys(params).map((key) => {
-          paramKeys.push(key + "=" + params[key]);
-          return paramKeys;
-        });
-
-        const queryString =
-          paramKeys && paramKeys.length ? paramKeys.join("&") : "";
-        response = axiosApiInstance.get(
-          `${baseURL + "/" + url}?${queryString}`,
-          params
-        );
-      } else {
-        response = axiosApiInstance.get(`${baseURL + "/" + url}`, params);
-      }
+axiosInstance.interceptors.response.use(
+  (response) => {
+    if (response.data.exception) {
+      throw response.data.exception;
     }
     return response;
-  };
-
-  POST = (url: any, data: any) => {
-    if (this.checkMockData(url)) {
-      return this.checkMockData(url);
-    }
-    return axiosApiInstance.post(baseURL + "/" + url, data);
-  };
-
-  PUT = (url: any, data: any) => {
-    if (this.checkMockData(url)) {
-      return this.checkMockData(url);
-    }
-    return axiosApiInstance.patch(baseURL + "/" + url, data);
-  };
-  DELETE = (url: any, config: any) => {
-    if (this.checkMockData(url)) {
-      return this.checkMockData(url);
-    }
-    return axiosApiInstance.delete(baseURL + "/" + url, { ...config });
-  };
-}
-
-export { API, setAuthorization, getLoggedinUser };
+  },
+  async (error) => {
+    const originalRequest = error.config;
+    // if (
+    //   (error?.response?.status === 401 ||
+    //     error.response?.data?.exception?.errorCode ===
+    //       Auth.errorCodeRequiresRefreshToken) &&
+    //   !originalRequest._retry &&
+    //   originalRequest.url !== apiURL// RequiresRefreshToken errorCode should not fired from refresh token api call , but it does!
+    // ) {
+    //   originalRequest._retry = true;
+    //   try {
+    //     const refreshRequest = {} as PostRefreshTokenRequestModel;
+    //     refreshRequest.refreshToken =
+    //       localStorage.getItem(Auth.refreshToken) || "";
+    //     refreshRequest.username = localStorage.getItem(Auth.userName) || "";
+    //     const originalBaseURL = http.defaults.baseURL; // preserve baseURL. Refresh token service changes it!
+    //     const response = await postRefreshToken(refreshRequest);
+    //     http.defaults.baseURL = originalBaseURL;
+    //     const { access_token, refresh_token } = response;
+    //     localStorage.setItem(Auth.accessToken, access_token || "");
+    //     localStorage.setItem(Auth.refreshToken, refresh_token || "");
+    //     return http(originalRequest);
+    //   } catch (error) {
+    //     return Promise.reject(error);
+    //   }
+    // }
+    return Promise.reject(error);
+  }
+);
+const API = () => axiosInstance;
+export default API;

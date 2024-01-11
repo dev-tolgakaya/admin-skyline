@@ -33,10 +33,9 @@ import { getChartData as onGetChartData } from "../../slices/dashboards/thunk";
 
 import Breadcrumb from "Components/Common/Breadcrumb";
 import TablePagination from "Components/uikits/tablePagination";
-import { API } from "helpers/api";
+import API from "helpers/api/index";
 
 const Dashboard = () => {
-  const api = new API();
 
   const [subscribemodal, setSubscribemodal] = useState<boolean>(false);
 
@@ -50,12 +49,12 @@ const Dashboard = () => {
     },
   ];
 
-  useEffect(() => {
-    // setTimeout(() => {
-    //   setSubscribemodal(true);
-    // }, 2000);
-    api.POST("/getUserList", {});
-  }, []);
+  // useEffect(() => {
+  //   // setTimeout(() => {
+  //   //   setSubscribemodal(true);
+  //   // }, 2000);
+  //   api.POST("/getUserList", {});
+  // }, []);
 
   const [periodData, setPeriodData] = useState<any>([]);
   const [periodType, setPeriodType] = useState<string>("yearly");

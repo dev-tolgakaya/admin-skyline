@@ -1,13 +1,16 @@
-import { API } from "../../api";
-const api = new API();
+import API from "../../api";
 
-export class AuthService {
-  public static loginUser(data: any) {
-    return api.POST("api/v1/identity/login", data);
-  }
-  public static logoutUser(data: any) {
-    return api.POST("api/v1/identity/logout", data);
-  }
-}
+const loginUser = async (data: any): Promise<any> => {
+  const res = await API().post("/api/v1/identity/login", data);
+  return res?.data;
+};
 
+const logoutUser = async (data: any): Promise<any> => {
+  const res = await API().post("/api/v1/identity/logout", data);
+  return res;
+};
 
+export const AuthService = {
+  loginUser,
+  logoutUser,
+};

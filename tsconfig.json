@@ -14,21 +14,24 @@
     "module": "esnext",
     "baseUrl": "src", // This must be specified if "paths" is.
     "paths": {
-       "@component/*": ["Components/views/*"],
-       "@common/*": ["src/Components/Common/*"],
-       "@assets/*": ["Components/assets/*"],
-       "@shared/*": ["app/_shared/*"],
-       "@helpers/*": ["helpers/*"]
-   },
+      "@component/*": ["Components/views/*"],
+      "@common/*": ["src/Components/Common/*"],
+      "@assets/*": ["Components/assets/*"],
+      "@shared/*": ["app/_shared/*"],
+      "@slices/*": ["slices/*"],
+      "@helpers/*": ["helpers/*"]
+    },
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/Allcharts/knob/knob.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/pages/Allcharts/knob/knob.tsx"
+  ],
   "exclude": ["node_modules"]
 }
-
-
-

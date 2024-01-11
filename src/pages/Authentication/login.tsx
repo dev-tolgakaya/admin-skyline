@@ -26,11 +26,7 @@ import logo from "../../assets/images/logo.svg";
 import lightlogo from "../../assets/images/logo-light.svg";
 
 //import thunk
-import {
-  loginuser,
-  resetLoginMsgFlag,
-  socialLogin,
-} from "slices/auth/login/thunk";
+import { loginUser } from "slices/auth/login/thunk";
 
 import withRouter from "Components/Common/withRouter";
 import { createSelector } from "reselect";
@@ -64,25 +60,25 @@ const Login = (props: any) => {
       password: validations.form.password,
     }),
     onSubmit: (values: any) => {
-      dispatch(loginuser(values, navigate));
+      dispatch(loginUser({ data: values, navigate }));
     },
   });
 
-  const signIn = (type: any) => {
-    dispatch(socialLogin(type, props.router.navigate));
-  };
+  // const signIn = (type: any) => {
+  //   dispatch(socialLogin(type, props.router.navigate));
+  // };
 
-  const socialResponse = (type: any) => {
-    signIn(type);
-  };
+  // const socialResponse = (type: any) => {
+  //   signIn(type);
+  // };
 
-  useEffect(() => {
-    if (error) {
-      setTimeout(() => {
-        dispatch(resetLoginMsgFlag());
-      }, 3000);
-    }
-  }, [dispatch, error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     setTimeout(() => {
+  //       dispatch(resetLoginMsgFlag());
+  //     }, 3000);
+  //   }
+  // }, [dispatch, error]);
 
   return (
     <div className="account-pages my-5 pt-sm-5">
@@ -240,10 +236,10 @@ const Login = (props: any) => {
                           <Link
                             to="#"
                             className="social-list-item bg-primary text-white border-primary"
-                            onClick={(e: any) => {
-                              e.preventDefault();
-                              socialResponse("facebook");
-                            }}
+                            // onClick={(e: any) => {
+                            //   e.preventDefault();
+                            //   socialResponse("facebook");
+                            // }}
                           >
                             <i className="mdi mdi-facebook" />
                           </Link>
@@ -260,10 +256,10 @@ const Login = (props: any) => {
                           <Link
                             to="#"
                             className="social-list-item bg-danger text-white border-danger"
-                            onClick={(e: any) => {
-                              e.preventDefault();
-                              socialResponse("google");
-                            }}
+                            // onClick={(e: any) => {
+                            //   e.preventDefault();
+                            //   socialResponse("google");
+                            // }}
                           >
                             <i className="mdi mdi-google" />
                           </Link>

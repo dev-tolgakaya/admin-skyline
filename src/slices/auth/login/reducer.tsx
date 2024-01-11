@@ -1,51 +1,58 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { loginUser, logoutUser } from "./thunk";
 
-export const initialState = {
-  user: "",
-  error: "", // for error msg
+export interface IInitialState {
+  loading: boolean;
+  isLoggedIn: boolean;
+  loginData: any;
+  language: string;
+}
+
+export const initialState: IInitialState = {
   loading: false,
-  isUserLogout: false,
-  errorMsg: false, // for error
+  isLoggedIn: false,
+  loginData: {},
+  language: "tr",
 };
 
 const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    loginSuccess(state, action) {
-      state.user = action.payload;
-      state.loading = false;
-      state.errorMsg = false;
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
     },
-    apiError(state, action) {
-      state.error = action.payload;
-      state.loading = true;
-      state.isUserLogout = false;
-      state.errorMsg = true;
+    singOut: (state) => {
+      state.isLoggedIn = false;
     },
-    resetLoginFlag(state) {
-      // state.error = null;
-      state.error = "";
-      state.loading = false;
-      state.errorMsg = false;
-    },
-    logoutUserSuccess(state) {
-      state.isUserLogout = true;
-    },
-    openLoading(state) {
-      state.loading = true;
-    },
-    closeLoading(state) {
-      state.loading = false;
+    setLanguage: (state, action: PayloadAction<string>) => {
+      state.language = action.payload;
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loginUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.loginData = action.payload;
+        localStorage.setItem("authUser", JSON.stringify(action.payload));
+        state.loading = false;
+        state.isLoggedIn = true;
+      })
+      .addCase(logoutUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(logoutUser.fulfilled, (state, action) => {
+        localStorage.setItem("authUser", JSON.stringify({}));
+        state.loading = false;
+        state.isLoggedIn = false;
+      })
+      .addCase(logoutUser.rejected, (state) => {
+        state.loading = false;
+      });
+  },
 });
-export const {
-  loginSuccess,
-  apiError,
-  resetLoginFlag,
-  logoutUserSuccess,
-  openLoading,
-  closeLoading,
-} = loginSlice.actions;
+
+export const { setLoading, singOut, setLanguage } = loginSlice.actions;
 export default loginSlice.reducer;
