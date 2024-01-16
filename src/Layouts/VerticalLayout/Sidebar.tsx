@@ -36,6 +36,7 @@ const Sidebar = (props: any) => {
         <div data-simplebar className="h-100">
           {props.type !== "condensed" ? <SidebarContent /> : <SidebarContent />}
         </div>
+        <div className="navbar-brand-box-bottom">tolga</div>
         <div className="sidebar-background"></div>
       </div>
     </React.Fragment>

@@ -5,13 +5,19 @@
 //
 
 // Vertical Sidebar  Light
-$sidebar-bg: #ffffff;
-$sidebar-menu-item-color: #545a6d;
+$sidebar-bg: #101323;
+$sidebar-menu-item-color: #F4F4F4;
 $sidebar-menu-sub-item-color: #545a6d;
 $sidebar-menu-item-icon-color: #7f8387;
-$sidebar-menu-item-hover-color: #383c40;
-$sidebar-menu-item-active-color: #556ee6;
-$sidebar-width:  250px;
+$sidebar-menu-item-hover-color: #17191C;
+
+
+$sidebar-menu-item-hover-bg-color: $sidebar-menu-item-color;
+$sidebar-menu-item-active-bg-color: $sidebar-menu-item-color;
+$sidebar-menu-item-active-color: $sidebar-menu-item-hover-color;
+
+
+$sidebar-width:  240px;
 $sidebar-collapsed-width:  70px;
 $sidebar-width-sm:  160px;
 $layout-collapsed-min-height: 1760px;
@@ -55,7 +61,7 @@ $display-none: none;
 $display-block: block;
 
 // Brand 
-$navbar-brand-box-width: 250px;
+$navbar-brand-box-width: 240px;
 
 // Boxed layout width
 $boxed-layout-width:    1300px;
@@ -621,7 +627,7 @@ $aspect-ratios: (
 
 // scss-docs-start font-variables
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      'Poppins', sans-serif;
+$font-family-sans-serif:      'Inter', sans-serif;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
 // stylelint-enable value-keyword-case

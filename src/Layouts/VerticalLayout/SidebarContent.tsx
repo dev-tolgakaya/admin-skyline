@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 //i18n
 import { withTranslation } from "react-i18next";
 import withRouter from "../../Components/Common/withRouter";
+import { GridViewOutlined, CastConnectedOutlined } from "@mui/icons-material";
 
 const SidebarContent = (props: any) => {
   const ref = useRef<any>();
@@ -142,20 +143,18 @@ const SidebarContent = (props: any) => {
           <ul className="metismenu list-unstyled" id="side-menu">
             <li>
               <Link to="/dashboard">
-                <i className="bx bx-store"></i>
+                {/* <i className="bx bx-store"></i> */}
+                <GridViewOutlined className="list-item-icon-margin" />
                 <span>{props.t("Menu.Dashboard")}</span>
               </Link>
             </li>
-
-            <li className="menu-title">{props.t("Apps")}</li>
-
             <li>
               <Link to="/calendar">
-                <i className="bx bx-calendar"></i>
+                {/* <i className="bx bx-calendar"></i> */}
+                <CastConnectedOutlined className="list-item-icon-margin" />
                 <span>{props.t("Menu.Calendar")}</span>
               </Link>
             </li>
-
             {/* <li>
               <Link to="/chat">
                 <i className="bx bx-chat"></i>
