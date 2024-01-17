@@ -202,7 +202,7 @@ body[data-sidebar-size="small"] {
     }
 
     body[data-sidebar-size="small"].vertical-collpsed .footer {
-      left: 70px;
+      left: $sidebar-collapsed-width;
     }
   }
 
@@ -212,20 +212,6 @@ body[data-sidebar-size="small"] {
   }
 }
 
-// Horizontal layout
-
-body[data-layout="horizontal"] {
-  #page-topbar {
-    right: 0;
-  }
-  .main-content {
-    margin-right: 0 !important;
-  }
-
-  .footer {
-    right: 0 !important;
-  }
-}
 
 @include media-breakpoint-up(lg) {
   .topnav {

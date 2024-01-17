@@ -15,17 +15,18 @@ const Sidebar = (props: any) => {
     <React.Fragment>
       <div className="vertical-menu">
         <div className="navbar-brand-box">
-          <Link to="/" className="logo logo-light">
+          {/* <Link to="/" className="logo logo-light">
             <span className="logo-sm">
               <img src={logoLightSvg} alt="" height="22" />
             </span>
             <span className="logo-lg">
               <img src={logoLightPng} alt="" height="19" />
             </span>
-          </Link>
+          </Link> */}
+          tolga
         </div>
-        <div data-simplebar className="h-100">
-          {props.type !== "condensed" ? <SidebarContent /> : <SidebarContent />}
+        <div className="h-100">
+        <SidebarContent /> 
         </div>
         <div className="navbar-brand-box-bottom">tolga</div>
         <div className="sidebar-background"></div>

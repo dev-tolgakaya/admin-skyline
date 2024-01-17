@@ -111,14 +111,7 @@
   z-index: -1;
 }
 
-.simplebar-track {
-  z-index: 1;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
+
 
 [data-simplebar].simplebar-dragging .simplebar-content {
   pointer-events: none;
@@ -154,15 +147,8 @@
   transition: opacity 0s linear;
 }
 
-.simplebar-track.simplebar-vertical {
-  top: 0;
-  width: 11px;
-}
 
-.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
-  top: 2px;
-  bottom: 2px;
-}
+
 
 .simplebar-track.simplebar-horizontal {
   left: 0;
@@ -185,11 +171,7 @@
   width: auto;
 }
 
-/* Rtl support */
-[data-simplebar-direction='rtl'] .simplebar-track.simplebar-vertical {
-  right: auto;
-  left: 0;
-}
+
 
 .hs-dummy-scrollbar-size {
   direction: rtl;

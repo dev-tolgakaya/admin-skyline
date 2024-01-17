@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -9,6 +9,7 @@ import { Row, Col, Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
 import LanguageDropdown from "../../Components/Common/LanguageDropdown";
 import NotificationDropDown from "../../Components/CommonForBoth/NotificationDropDown";
 import ProfileMenu from "../../Components/CommonForBoth/TopBarDropDown/ProfileMenu";
+import useWindowSize from "helpers/hooks/useWindowSize";
 
 import logo from "../../assets/images/logo.svg";
 import logoLightSvg from "../../assets/images/logo-light.svg";
@@ -20,6 +21,7 @@ const Header = (props: any) => {
   const [search, setsearch] = useState(false);
   const [megaMenu, setmegaMenu] = useState(false);
   const [socialDrp, setsocialDrp] = useState(false);
+  const { windowSize } = useWindowSize();
 
   const toggleFullscreen = () => {
     let document: any = window.document;
@@ -70,19 +72,30 @@ const Header = (props: any) => {
     }
   }
 
+  const isMobile = windowSize?.width <= 998;
+
+  useEffect(() => {
+    if (isMobile) {
+      document.body.classList.add("vertical-collpsed");
+    }
+  }, [windowSize?.width]);
+
   return (
     <header id="page-topbar">
       <div className="navbar-header">
         <div className="d-flex">
-          <button
-            type="button"
-            onClick={() => tToggle()}
-            className="btn btn-sm px-3 font-size-16 header-item "
-            id="vertical-menu-btn"
-          >
-            <i className="fa fa-fw fa-bars" />
-          </button>
+          {!isMobile && (
+            <button
+              type="button"
+              onClick={() => tToggle()}
+              className="btn btn-sm px-3 font-size-16 header-item "
+              id="vertical-menu-btn"
+            >
+              <i className="fa fa-fw fa-bars" />
+            </button>
+          )}
         </div>
+
         <div className="d-flex">
           <div className="dropdown d-inline-block d-lg-none ms-2">
             <button
