@@ -10,9 +10,6 @@
   z-index: 1002;
   background-color: $header-bg;
   box-shadow: $box-shadow;
-  @media (max-width: 992.98px) {
-    left: 0;
-  }
 }
 
 .navbar-header {
@@ -34,7 +31,7 @@
 .navbar-brand-box {
     padding: 0 1.5rem;
     text-align: center;
-    width: $navbar-brand-box-width;
+    width: $sidebar-width !important;
     padding: 24px;
     gap: 8px;
     border-bottom: 1px solid #3B3B3B;
@@ -101,15 +98,13 @@
 
 @media (max-width: 992px) {
     .navbar-brand-box {
-        width: auto;
+        width: 104px;
      
     }
 
     .logo {
 
-        span.logo-lg {
-            display: none;
-        }
+     
 
         span.logo-sm {
             display: inline-block;

@@ -18,7 +18,7 @@ $sidebar-menu-item-active-color: $sidebar-menu-item-hover-color;
 
 
 $sidebar-width:  240px;
-$sidebar-collapsed-width:  70px;
+$sidebar-collapsed-width:  104px;
 $sidebar-width-sm:  160px;
 $layout-collapsed-min-height: 1760px;
 
@@ -31,7 +31,7 @@ $sidebar-dark-menu-item-hover-color: #ffffff;
 $sidebar-dark-menu-item-active-color: #ffffff;
 
 // Topbar - Deafult Light
-$header-height: 70px;
+$header-height: 80px;
 $header-bg:                                           var(--#{$prefix}heading-bg);
 $header-item-color:                                   var(--#{$prefix}header-item-color);
 
@@ -61,7 +61,7 @@ $display-none: none;
 $display-block: block;
 
 // Brand 
-$navbar-brand-box-width: 240px;
+$navbar-brand-box-width: $sidebar-width;
 
 // Boxed layout width
 $boxed-layout-width:    1300px;
