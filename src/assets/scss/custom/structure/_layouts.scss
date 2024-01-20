@@ -49,25 +49,7 @@ body[data-layout-size="boxed"] {
 }
 
 
-// Horizontal Boxed Layout
 
-body[data-layout="horizontal"][data-layout-size="boxed"] {
-  #page-topbar,
-  #layout-wrapper,
-  .footer {
-    max-width: 100%;
-  }
-  .container-fluid,
-  .navbar-header {
-    max-width: $boxed-layout-width;
-  }
-
-  &.vertical-collpsed {
-    .main-content{
-      min-height: auto;
-    }
-  }
-}
 
 // Scrollable layout
 

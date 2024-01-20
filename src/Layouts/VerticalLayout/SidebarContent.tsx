@@ -137,25 +137,24 @@ const SidebarContent = (props: any) => {
   }
 
   return (
-    <React.Fragment>
-      <SimpleBar className="h-100" ref={ref}>
-        <div id="sidebar-menu">
-          <ul className="metismenu list-unstyled" id="side-menu">
-            <li>
-              <Link to="/dashboard">
-                {/* <i className="bx bx-store"></i> */}
-                <GridViewOutlined className="list-item-icon-margin" />
-                <span>{props.t("Menu.Dashboard")}</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/calendar">
-                {/* <i className="bx bx-calendar"></i> */}
-                <CastConnectedOutlined className="list-item-icon-margin" />
-                <span>{props.t("Menu.Calendar")}</span>
-              </Link>
-            </li>
-            {/* <li>
+    <SimpleBar className="h-100" ref={ref}>
+      <div id="sidebar-menu">
+        <ul className="metismenu list-unstyled" id="side-menu">
+          <li>
+            <Link to="/dashboard" className="w100">
+              {/* <i className="bx bx-store"></i> */}
+              <GridViewOutlined />
+              <span>{props.t("Menu.Dashboard")}</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/calendar">
+              {/* <i className="bx bx-calendar"></i> */}
+              <CastConnectedOutlined />
+              <span>{props.t("Menu.Calendar")}</span>
+            </Link>
+          </li>
+          {/* <li>
               <Link to="/chat">
                 <i className="bx bx-chat"></i>
                 <span>{props.t("Chat")}</span>
@@ -411,7 +410,7 @@ const SidebarContent = (props: any) => {
               </ul>
             </li> */}
 
-            {/* <li className="menu-title">Pages</li>
+          {/* <li className="menu-title">Pages</li>
             <li>
               <Link to="/#" className="has-arrow">
                 <i className="bx bx-user-circle"></i>
@@ -511,7 +510,7 @@ const SidebarContent = (props: any) => {
               </ul>
             </li> */}
 
-            {/* <li className="menu-title">{props.t("Components")}</li>
+          {/* <li className="menu-title">{props.t("Components")}</li>
 
             <li>
               <Link to="/#" className="has-arrow">
@@ -749,10 +748,9 @@ const SidebarContent = (props: any) => {
                 </li>
               </ul>
             </li> */}
-          </ul>
-        </div>
-      </SimpleBar>
-    </React.Fragment>
+        </ul>
+      </div>
+    </SimpleBar>
   );
 };
 export default withRouter(withTranslation()(SidebarContent));

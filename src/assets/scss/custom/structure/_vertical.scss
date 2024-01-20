@@ -23,6 +23,28 @@
     top: 0px;
     z-index: 99;
     background: $sidebar-bg !important;
+    padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+    gap: 8px;
+    > div {
+      height: 30px !important;
+    }
+    .logoIconFirst {
+      color: $white;
+      align-self: center;
+      font-size: 32px;
+    }
+    .logoIconSecond {
+      color: $white;
+      align-self: center;
+    }
+    .logotext {
+      color: $white;
+      font-family: Poppins;
+      font-size: 20px;
+      font-style: normal;
+      line-height: normal;
+      width: 104px;
+    }
   }
   .navbar-brand-box-bottom {
     position: fixed;
@@ -42,9 +64,6 @@
 }
 
 #sidebar-menu {
-  // menü içerisi
-  padding: 10px 0 30px 0;
-
   .mm-active {
     > .has-arrow {
       &:after {
@@ -65,13 +84,14 @@
   }
 
   ul {
-    margin-top: 1rem;
-    padding: 0px 24px 0px 24px;
+    margin-top: 2rem;
+    padding: 0px 24px;
     display: grid;
     gap: 8px;
     li {
-      padding: 16px 8px 16px 0px;
-      border-radius: 4px;
+      padding: 1rem 0.5rem;
+      border-radius: 0.25rem;
+      display: flex;
       cursor: pointer;
       &:hover {
         background: $sidebar-menu-item-hover-bg-color;
@@ -86,19 +106,15 @@
         background: $sidebar-menu-item-hover-bg-color !important;
       }
       a {
-        padding: 0px 8px;
         display: flex;
         align-items: center;
         color: $sidebar-menu-item-color;
-        position: relative;
-        font-size: 16px;
-        line-height: 24px;
+        font-size: 1rem;
+        line-height: 1.5rem;
         font-weight: 450;
         align-self: center;
-        letter-spacing: 1%;
-        .list-item-icon-margin {
-          margin-right: 5px;
-        }
+        gap: 0.5rem;
+        margin-left: 0.5rem;
       }
       .badge {
         margin-top: 4px;
@@ -143,7 +159,16 @@
   }
 
   .navbar-brand-box {
+    padding: 24px 0px;
     width: $sidebar-collapsed-width !important;
+    > div {
+      justify-content: center;
+      gap: 0px !important;
+    }
+    .logotext,
+    .logoIconSecond {
+      display: none !important;
+    }
   }
 
   #page-topbar {
@@ -202,8 +227,7 @@
           white-space: nowrap;
 
           > a {
-            padding: 15px 20px;
-            min-height: 55px;
+            padding: 0px 8px;
             transition: none;
 
             &:hover,
@@ -222,7 +246,6 @@
               padding-left: 25px;
             }
           }
-
         }
 
         ul {
