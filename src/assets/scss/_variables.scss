@@ -29,8 +29,8 @@ $sidebar-dark-menu-item-active-color: #ffffff;
 
 // Topbar - Deafult Light
 $header-height: 80px;
-$header-bg:                                           var(--#{$prefix}heading-bg);
-$header-item-color:                                   var(--#{$prefix}header-item-color);
+$header-bg:                                           #F7F7F7;
+$header-item-color:                                   #17191C;
 
 // Topbar - Dark
 $header-dark-bg:                                      var(--#{$prefix}heading-dark-bg);
@@ -62,7 +62,7 @@ $navbar-brand-box-width: $sidebar-width;
 
 // Boxed layout width
 $boxed-layout-width:    1300px;
-$boxed-body-bg:                                 var(--#{$prefix}boxed-body-bg);
+$boxed-body-bg:                                 #F7F7F7;
 
 // Font Weight
 $fw-medium: 500;
@@ -483,7 +483,7 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   #f8f8fb;
+$body-bg:                   #F7F7F7;
 $body-color:                $gray-700;
 $body-text-align:           null;
 

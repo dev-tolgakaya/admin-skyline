@@ -5,7 +5,7 @@ export const initialState = {
 };
 
 const GeneralSlice = createSlice({
-  name: "Profile",
+  name: "General",
   initialState,
   reducers: {
     setIsCollapsed(state, action) {

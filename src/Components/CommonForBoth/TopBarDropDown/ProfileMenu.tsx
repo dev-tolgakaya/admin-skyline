@@ -63,10 +63,6 @@ const ProfileMenu = (props: any) => {
             src={user1}
             alt="Header Avatar"
           />
-          <span className="d-none d-xl-inline-block ms-2 me-1">
-            {username || "admin"}
-          </span>
-          <i className="mdi mdi-chevron-down d-none d-xl-inline-block" />
         </DropdownToggle>
         <DropdownMenu className="dropdown-menu-end">
           <DropdownItem tag="a" href={process.env.PUBLIC_URL + "/profile"}>
