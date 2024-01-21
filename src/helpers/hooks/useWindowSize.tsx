@@ -5,8 +5,6 @@ const defaultIsMobile = true
 export default function useWindowSize() {
   const isSSR = typeof window === 'undefined'
 
-  console.log('sss',isSSR)
-
   const getMobileBreakpoint = useCallback(() => {
     if (isSSR) return 0
     return Number(

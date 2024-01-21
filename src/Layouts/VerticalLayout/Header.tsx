@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setIsCollapsed } from "slices/general/reducer";
 
 import { Link } from "react-router-dom";
 
@@ -22,6 +24,7 @@ const Header = (props: any) => {
   const [megaMenu, setmegaMenu] = useState(false);
   const [socialDrp, setsocialDrp] = useState(false);
   const { windowSize } = useWindowSize();
+  const dispatch: any = useDispatch();
 
   const toggleFullscreen = () => {
     let document: any = window.document;
@@ -70,6 +73,9 @@ const Header = (props: any) => {
       body.classList.toggle("vertical-collpsed");
       body.classList.toggle("sidebar-enable");
     }
+    dispatch(
+      setIsCollapsed(document.body.classList.contains("vertical-collpsed"))
+    );
   }
 
   const isMobile = windowSize?.width <= 998;
@@ -84,7 +90,7 @@ const Header = (props: any) => {
     <header id="page-topbar">
       <div className="navbar-header">
         <div className="d-flex">
-          {!isMobile && (
+          {/* {!isMobile && (
             <button
               type="button"
               onClick={() => tToggle()}
@@ -93,7 +99,7 @@ const Header = (props: any) => {
             >
               <i className="fa fa-fw fa-bars" />
             </button>
-          )}
+          )} */}
         </div>
 
         <div className="d-flex">

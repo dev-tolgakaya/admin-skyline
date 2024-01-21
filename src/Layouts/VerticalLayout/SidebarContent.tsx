@@ -136,20 +136,20 @@ const SidebarContent = (props: any) => {
     }
   }
 
+  const changeRouteForLi = (type: any) => props.router.navigate(type);
+
   return (
     <SimpleBar className="h-100" ref={ref}>
       <div id="sidebar-menu">
         <ul className="metismenu list-unstyled" id="side-menu">
-          <li>
+          <li onClick={() => changeRouteForLi("/dashboard")}>
             <Link to="/dashboard" className="w100">
-              {/* <i className="bx bx-store"></i> */}
               <GridViewOutlined />
               <span>{props.t("Menu.Dashboard")}</span>
             </Link>
           </li>
-          <li>
+          <li onClick={() => changeRouteForLi("/calendar")}>
             <Link to="/calendar">
-              {/* <i className="bx bx-calendar"></i> */}
               <CastConnectedOutlined />
               <span>{props.t("Menu.Calendar")}</span>
             </Link>

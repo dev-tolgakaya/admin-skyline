@@ -32,10 +32,12 @@
       color: $white;
       align-self: center;
       font-size: 32px;
+      cursor: pointer;
     }
     .logoIconSecond {
       color: $white;
       align-self: center;
+      cursor: pointer;
     }
     .logotext {
       color: $white;
@@ -44,12 +46,28 @@
       font-style: normal;
       line-height: normal;
       width: 104px;
+      cursor: pointer;
     }
   }
   .navbar-brand-box-bottom {
+    padding: 24px 0px;
     position: fixed;
     bottom: 0px;
     z-index: 99;
+    background: $sidebar-bg !important;
+    > div {
+      display: flex;
+      padding: 0px 24px 0px 32px;
+      align-items: flex-start;
+      align-self: stretch;
+      .bottom-logo-container {
+        width: 160px !important;
+      }
+      .bottomLogo {
+        color: $white;
+        cursor: pointer;
+      }
+    }
   }
 }
 
@@ -167,6 +185,18 @@
     }
     .logotext,
     .logoIconSecond {
+      display: none !important;
+    }
+  }
+  .navbar-brand-box-bottom {
+    > div {
+      padding: 0px !important;
+      gap: 0px !important;
+      justify-content: center;
+      align-items: center;
+    }
+    width: $sidebar-collapsed-width !important;
+    .bottom-logo-container {
       display: none !important;
     }
   }
