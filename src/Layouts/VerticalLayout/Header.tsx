@@ -34,7 +34,14 @@ const Header = (props: any) => {
   return (
     <header id="page-topbar">
       <div className="navbar-header">
-        <div className="d-flex">{/* //Tablar buraya gelecek !! */}TABS</div>
+        <div className="d-flex nav-l-side gap-4">
+          <div className="mainTabContainer gap-1 active">
+            <p className="mainTab">Merchant transactions</p>
+          </div>
+          <div className="mainTabContainer gap-1">
+            <p className="mainTab">Customer transactions</p>
+          </div>
+        </div>
 
         <div className="d-flex nav-r-side justify-content-center align-items-center gap-4">
           <div className="d-inline-block">
