@@ -1,61 +1,13 @@
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Card,
-  CardBody,
-  Col,
-  Container,
-  Input,
-  Modal,
-  ModalHeader,
-  Row,
-  ModalBody,
-  CardTitle,
-  InputGroup,
-  Nav,
-  NavItem,
-  NavLink,
-} from "reactstrap";
-import Activity from "./Activity";
-import MonthlyEarning from "./MonthlyEarning";
-import SocialSource from "./SocialSource";
-import TopCities from "./TopCities";
-import Welcomeback from "./Welcomeback";
-import LatestTranaction from "./LatestTranaction";
-import classNames from "classnames";
 
-//import Charts
-import StackedColumnChart from "./StackedColumnChart";
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
 
 import { getChartData as onGetChartData } from "../../slices/dashboards/thunk";
-
-import Breadcrumb from "Components/Common/Breadcrumb";
-import TablePagination from "Components/uikits/tablePagination";
-import API from "helpers/api/index";
+import { setMainTabArray } from "slices/general/reducer";
+import { dashboardMainTabs } from "common/constants/mainTabs";
 
 const Dashboard = () => {
-
-  const [subscribemodal, setSubscribemodal] = useState<boolean>(false);
-
-  const reports = [
-    { title: "Orders", iconClass: "bx-copy-alt", description: "1,235" },
-    { title: "Revenue", iconClass: "bx-archive-in", description: "$35, 723" },
-    {
-      title: "Average Price",
-      iconClass: "bx-purchase-tag-alt",
-      description: "$16.2",
-    },
-  ];
-
-  // useEffect(() => {
-  //   // setTimeout(() => {
-  //   //   setSubscribemodal(true);
-  //   // }, 2000);
-  //   api.POST("/getUserList", {});
-  // }, []);
-
   const [periodData, setPeriodData] = useState<any>([]);
   const [periodType, setPeriodType] = useState<string>("yearly");
 
@@ -81,6 +33,10 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(onGetChartData("yearly"));
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(setMainTabArray(dashboardMainTabs));
+  }, []);
 
   return (
     // <React.Fragment>
