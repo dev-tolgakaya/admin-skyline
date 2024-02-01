@@ -5,9 +5,11 @@ import {
   Search,
   NotificationsActiveOutlined,
   HelpOutlineOutlined,
+  CloseOutlined,
 } from "@mui/icons-material";
 import classnames from "classnames";
 import MainTabs from "Components/Common/MainTabs";
+import { Input } from "reactstrap";
 
 // Import menuDropdown
 import LanguageDropdown from "../../Components/Common/LanguageDropdown";
@@ -30,60 +32,37 @@ const Header = (props: any) => {
     }
   }, [windowSize?.width]);
 
+  const toggleSearchBar = () => {
+    document
+      .getElementsByClassName("navbar-header")[0]
+      .classList.toggle("searchBar");
+  };
 
   return (
     <header id="page-topbar">
-      <div className="navbar-header">
+      <div className="navbar-header" id="navbar-header">
+        <div className="searchBarContainer d-none gap-2">
+          <Search role="button" />
+          <Input
+            className="searchBarInput"
+            placeholder="Start typing to search names, IDs, and more..."
+          />
+          <CloseOutlined onClick={toggleSearchBar} role="button" />
+        </div>
         <div className="d-flex nav-l-side gap-4">
           <MainTabs />
-          {/* <ul className="mainTabContainer gap-4" role="tablist">
-            <li className={classnames({ active: activeTab === 1 })}>
-              <div>
-                <a
-                  className={classnames({ active: activeTab === 1 })}
-                  onClick={() => {
-                    toggle(1);
-                  }}
-                >
-                  Merchant transactions
-                </a>
-              </div>
-            </li>
-            <li className={classnames({ active: activeTab === 2 })}>
-              <div>
-                <a
-                  className={classnames({ active: activeTab === 2 })}
-                  onClick={() => {
-                    toggle(2);
-                  }}
-                >
-                  Customer transactions
-                </a>
-              </div>
-            </li>
-          </ul> */}
-          {/* <div className="mainTabContainer gap-1 active">
-            <p className="mainTab">Merchant transactions</p>
-          </div>
-          <div className="mainTabContainer gap-1">
-            <p className="mainTab">Customer transactions</p>
-          </div> */}
         </div>
-
         <div className="d-flex nav-r-side justify-content-center align-items-center gap-4">
           <div className="d-inline-block">
-            <Search />
+            <Search onClick={toggleSearchBar} role="button" />
           </div>
           <div className="d-inline-block">
-            <NotificationsActiveOutlined />
+            <NotificationsActiveOutlined role="button" />
           </div>
           <div className="d-inline-block">
-            <HelpOutlineOutlined />
+            <HelpOutlineOutlined role="button" />
           </div>
-          {/* <LanguageDropdown />
-
-          <NotificationDropDown /> */}
-
+          {/* <LanguageDropdown /> */}
           <ProfileMenu />
         </div>
       </div>

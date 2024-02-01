@@ -36,6 +36,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(setMainTabArray(dashboardMainTabs));
+    return () => dispatch(setMainTabArray(null));
   }, []);
 
   return (
