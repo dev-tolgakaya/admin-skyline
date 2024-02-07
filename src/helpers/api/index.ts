@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiURL = process.env.REACT_APP_API_GATEWAY;
+const apiURL = process.env.REACT_APP_API_URL;
 
 const getToken = (): string | undefined => {
   return (
@@ -11,18 +11,22 @@ const getToken = (): string | undefined => {
 export const axiosInstance = axios.create({
   baseURL: apiURL,
   timeout: 60000, // 60 seconds timeout for all requests
+  maxContentLength: Infinity,
+  maxBodyLength: Infinity,
+  withCredentials: false,
 });
 
 axiosInstance.interceptors.request.use(
   function (config) {
     const token = getToken();
-
     if (!!token) {
-      config.headers!["Authorization"] = "Bearer " + token;
+      config.headers["Authorization"] = "Bearer " + token;
     }
-    config.headers!["Accept-Language"] = "tr";
-    config.headers!["Content-Type"] = "application/json; charset=utf-8";
-    config.headers!["Access-Control-Allow-Origin"] = "*";
+    config.headers["Access-Control-Allow-Origin"] = "*";
+    config.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE";
+    config.headers["Access-Control-Allow-Headers"] =
+      "Content-Type, Authorization";
+
     return config;
   },
 
@@ -67,5 +71,6 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-const API = () => axiosInstance;
+const API = axiosInstance;
+
 export default API;

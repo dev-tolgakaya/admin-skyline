@@ -10,7 +10,6 @@ import { ToastContainer } from "react-toastify";
 //constants
 import { LAYOUT_TYPES } from "./Components/constants/layout";
 
-import fakeBackend from "./helpers/AuthType/fakeBackend";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import AuthProtected from "Routes/AuthProtected";
@@ -20,7 +19,6 @@ import Spinners from "Components/Common/Spinner";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import appStore from "slices/store";
-fakeBackend();
 const getLayout = (layoutType: any) => {
   let Layout = VerticalLayout;
   switch (layoutType) {

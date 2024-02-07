@@ -1,5 +1,8 @@
-import UserList from "./users/userList";
+import MockAdapter from "axios-mock-adapter";
+import { axiosInstance } from "../../api";
 
-export default {
-  "/getUserList": UserList,
-};
+const mock = new MockAdapter(axiosInstance, {
+  delayResponse: 2000,
+});
+
+export default mock;

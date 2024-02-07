@@ -19,7 +19,7 @@ const authProtectedRoutes = [
 
 const publicRoutes = [
   { path: "/login", component: <Login /> },
-  { path: "/forgot-password", component: <ForgotPassword /> },
+{ path: "/forgot-password", component: <ForgotPassword /> },
   { path: "/register", component: <SignUp /> },
 ];
 export { authProtectedRoutes, publicRoutes };
