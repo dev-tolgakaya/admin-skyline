@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiURL = process.env.REACT_APP_API_URL;
+const apiURL = process.env.REACT_APP_API_GATEWAY;
 
 const getToken = (): string | undefined => {
   return (

@@ -7,7 +7,7 @@
   },
   "Menu": {
     "Dashboard": "Dashboard",
-    "Calendar": "Calendar"
+    "Transactions": "Transactions"
   },
   "Login": {
     "WelcomeBack": "Welcome Back !",
@@ -51,7 +51,6 @@
   "Saas": "Saas",
   "Crypto": "Crypto",
   "Apps": "Apps",
-  "Calendar": "Calendar",
   "New": "New",
   "Chat": "Chat",
   "Ecommerce": "Ecommerce",

@@ -148,10 +148,10 @@ const SidebarContent = (props: any) => {
               <span>{props.t("Menu.Dashboard")}</span>
             </Link>
           </li>
-          <li onClick={() => changeRouteForLi("/calendar")}>
-            <Link to="/calendar">
+          <li onClick={() => changeRouteForLi("/transactions")}>
+            <Link to="/transactions">
               <CastConnectedOutlined />
-              <span>{props.t("Menu.Calendar")}</span>
+              <span>{props.t("Menu.Transactions")}</span>
             </Link>
           </li>
           {/* <li>

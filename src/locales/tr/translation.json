@@ -7,7 +7,7 @@
   },
   "Menu": {
     "Dashboard": "Ana Sayfa",
-    "Calendar": "Takvim"
+    "Transactions": "İşlemler"
   },
   "Login": {
     "WelcomeBack": "Hoşgeldiniz !",
@@ -21,14 +21,14 @@
     "SignUp": "Kayıt Ol",
     "SignInWith": "Veya şununla giriş yap"
   },
-  "Register":{
-    "FreeRegister": "Ücretsiz Kayıt Ol",  
+  "Register": {
+    "FreeRegister": "Ücretsiz Kayıt Ol",
     "GetYourAccount": "SkyLine hesabınızı alın.",
     "Email": "E-posta",
     "UserName": "Kullanıcı Adı",
     "Password": "Şifre",
-    "Register":"Kayıt Ol",
-    "AlreadyHaveAnAccount":"Zaten bir hesabınız var mı?",
+    "Register": "Kayıt Ol",
+    "AlreadyHaveAnAccount": "Zaten bir hesabınız var mı?",
     "LogIn": "Giriş Yap"
   },
   "Header": {
@@ -52,7 +52,6 @@
   "Saas": "Saas",
   "Crypto": "Crypto",
   "Apps": "Apps",
-  "Calendar": "Calendar",
   "New": "New",
   "Chat": "Chat",
   "Ecommerce": "Ecommerce",

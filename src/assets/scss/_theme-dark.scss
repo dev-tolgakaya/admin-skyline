@@ -1,6 +1,7 @@
 // :root CSS dark variables
 
 [data-layout-mode="dark"] {
+    $primary-dark:red;
 
     // Color system - Dark Mode only
     $gray-100: #212529;
@@ -31,7 +32,7 @@
         --#{$prefix}gray-#{$color}: #{$value};
     }
 
-    --#{$prefix}body-bg:                                    #222736;
+    --#{$prefix}body-bg:                                    #17191C;
     --#{$prefix}body-bg-rgb:                                rgb(34, 39, 54);
     --#{$prefix}body-color-rgb:                             #{to-rgb($gray-400)};
     --#{$prefix}body-color:                                 #{$gray-400};

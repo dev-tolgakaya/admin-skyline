@@ -1,8 +1,8 @@
-// Variables
 
+$white:    #FFFFFF;
+$primary-dark: #17191c;
 
-// Vertical Sidebar  Light
-$sidebar-bg: #17191C;
+$sidebar-bg: $primary-dark;
 $sidebar-menu-item-color: #F4F4F4;
 $sidebar-menu-sub-item-color: #545a6d;
 $sidebar-menu-item-icon-color: #7f8387;
@@ -16,16 +16,8 @@ $sidebar-menu-item-active-color: $sidebar-menu-item-hover-color;
 
 $sidebar-width:  240px;
 $sidebar-collapsed-width:  104px;
-$sidebar-width-sm:  160px;
-$layout-collapsed-min-height: 1760px;
 
-// Vertical Sidebar - Dark
-$sidebar-dark-bg: #2a3042; //2c313a
-$sidebar-dark-menu-item-color: #a6b0cf;
-$sidebar-dark-menu-sub-item-color: #79829c;
-$sidebar-dark-menu-item-icon-color: #6a7187;
-$sidebar-dark-menu-item-hover-color: #ffffff;
-$sidebar-dark-menu-item-active-color: #ffffff;
+
 
 // Topbar - Deafult Light
 $header-height: 80px;
@@ -76,33 +68,45 @@ $table-head-bg:               $gray-100;
 $table-dark-border-color:     tint-color($gray-800, 7.5%);
 
 
-// Variables
-//
-// Variables should follow the `$component-state-property-size` formula for
-// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+$gray-25: #FBFCFC;
+$gray-50: #F8F9FB;
+$gray-100: #ECEEF2;
+$gray-200: #EAECF0;
+$gray-250: #DCDFE5;
+$gray-300: #C4C7CA;
+$gray-400: #9CA1A5;
+$gray-500: #787B7F;
+$gray-600: #55585B;
+$gray-700: #353739;
+$gray-800: #27292F;
+$gray-900: #18191A;
+$gray-1000: $primary-dark;
 
-// Color system
 
-// scss-docs-start gray-color-variables
-$white:    #f4f4f4;
-$primary-dark: #17191c;
-$gray-100: #f8f9fa;
-$gray-200: #eff2f7;
-$gray-300: #f6f6f6;
-$gray-400: #ced4da;
-$gray-500: #adb5bd;
-$gray-600: #74788d;
-$gray-700: #495057;
-$gray-800: #343a40;
-$gray-900: #212529;
-$black:    #000;
-// scss-docs-end gray-color-variables
+[data-layout-mode="dark"] {
+  $white:    #17191c;
+  $primary-dark: #FFFFFF;
+  $gray-25: #18191A;
+  $gray-50: #272A30;
+  $gray-100: #353739;
+  $gray-200: #55585B;
+  $gray-250: #787B7F;
+  $gray-300: #9CA1A5;
+  $gray-400: #C4C7CA;
+  $gray-500: #DCE0E5;
+  $gray-600: #EAECF0;
+  $gray-700: #EDEFF2;
+  $gray-800: #F9FAFB;
+  $gray-900: #FCFCFD;
+  $gray-1000: $primary-dark;
+}
 
-// fusv-disable
-// scss-docs-start gray-colors-map
 $grays: (
+    "25": $gray-25,
+    "50": $gray-50,
     "100": $gray-100,
     "200": $gray-200,
+    "250": $gray-250,
     "300": $gray-300,
     "400": $gray-400,
     "500": $gray-500,
@@ -111,6 +115,346 @@ $grays: (
     "800": $gray-800,
     "900": $gray-900
 );
+
+
+$green-25: #F5FEF9;
+$green-50: #EBFDF2;
+$green-100: #D0FADF;
+$green-200: #A6F4C5;
+$green-300: #6BE9A6;
+$green-400: #31D583;
+$green-500: #12B669;
+$green-600: #039754;
+$green-700: #027947;
+$green-800: #055F3A;
+$green-900: #054E31;
+
+[data-layout-mode="dark"] {
+$green-25: #054E31;
+$green-50: #055F3A;
+$green-100: #027947;
+$green-200: #039754;
+$green-300: #12B669;
+$green-400: #31D583;
+$green-500: #6BE9A6;
+$green-600: #A6F4C5;
+$green-700: #D0FADF;
+$green-800: #EBFDF2;
+$green-900: #F5FEF9;
+}
+
+
+$greens: (
+    "25": $green-25,
+    "50": $green-50,
+    "100": $green-100,
+    "200": $green-200,
+    "300": $green-300,
+    "400": $green-400,
+    "500": $green-500,
+    "600": $green-600,
+    "700": $green-700,
+    "800": $green-800,
+    "900": $green-900
+);
+
+
+$error-25: #FEFAFA;
+$error-50: #FEF2F1;
+$error-100: #FEE3E1;
+$error-200: #FECDC9;
+$error-300: #FCA19B;
+$error-400: #F97066;
+$error-500: #F04437;
+$error-600: #D92C20;
+$error-700: #B32218;
+$error-800: #901F17;
+$error-900: #7A2619;
+
+
+[data-layout-mode="dark"] {
+  $error-25: #7A2619;
+  $error-50: #901F17;
+  $error-100: #B32218;
+  $error-200: #D92C20;
+  $error-300: #F04437;
+  $error-400: #F97066;
+  $error-500: #FCA19B;
+  $error-600: #FECDC9;
+  $error-700: #FEE3E1;
+  $error-800: #FEF2F1;
+  $error-900: #FEFAFA;
+  }
+
+  $errors: (
+    "25": $error-25,
+    "50": $error-50,
+    "100": $error-100,
+    "200": $error-200,
+    "300": $error-300,
+    "400": $error-400,
+    "500": $error-500,
+    "600": $error-600,
+    "700": $error-700,
+    "800": $error-800,
+    "900": $error-900
+);
+
+$warning-25: #FFFCF4;
+$warning-50: #FFF9EB;
+$warning-100: #FEEFC6;
+$warning-200: #FEDE88;
+$warning-300: #FEC84A;
+$warning-400: #FCB022;
+$warning-500: #F78F08;
+$warning-600: #DB6803;
+$warning-700: #B54707;
+$warning-800: #93370C;
+$warning-900: #792D0D;
+
+
+[data-layout-mode="dark"] {
+  $warning-25: #792D0D;
+  $warning-50: #93370C;
+  $warning-100: #B54707;
+  $warning-200: #DB6803;
+  $warning-300: #F78F08;
+  $warning-400: #FCB022;
+  $warning-500: #FEC84A;
+  $warning-600: #FEDE88;
+  $warning-700: #FEEFC6;
+  $warning-800: #FFF9EB;
+  $warning-900: #FFFCF4;
+  }
+
+  $warnings: (
+    "25": $warning-25,
+    "50": $warning-50,
+    "100": $warning-100,
+    "200": $warning-200,
+    "300": $warning-300,
+    "400": $warning-400,
+    "500": $warning-500,
+    "600": $warning-600,
+    "700": $warning-700,
+    "800": $warning-800,
+    "900": $warning-900
+);
+
+
+$blue-25: #F4F9FF;
+$blue-50: #EFF8FF;
+$blue-100: #D1E9FF;
+$blue-200: #B2DDFF;
+$blue-300: #84CAFF;
+$blue-400: #53B0FD;
+$blue-500: #2E90FA;
+$blue-600: #156FEE;
+$blue-700: #175CD3;
+$blue-800: #1849A9;
+$blue-900: #194084;
+
+
+[data-layout-mode="dark"] {
+  $blue-25: #194084;
+  $blue-50: #1849A9;
+  $blue-100: #175CD3;
+  $blue-200: #156FEE;
+  $blue-300: #2E90FA;
+  $blue-400: #53B0FD;
+  $blue-500: #84CAFF;
+  $blue-600: #B2DDFF;
+  $blue-700: #D1E9FF;
+  $blue-800: #EFF8FF;
+  $blue-900: #F4F9FF;
+  }
+
+  $blues: (
+    "25": $blue-25,
+    "50": $blue-50,
+    "100": $blue-100,
+    "200": $blue-200,
+    "300": $blue-300,
+    "400": $blue-400,
+    "500": $blue-500,
+    "600": $blue-600,
+    "700": $blue-700,
+    "800": $blue-800,
+    "900": $blue-900
+);
+
+$purple-25: #FAF9FF;
+$purple-50: #F3F3FF;
+$purple-100: #EAE8FE;
+$purple-200: #D9D5FE;
+$purple-300: #BCB4FD;
+$purple-400: #9A89FB;
+$purple-500: #7959F8;
+$purple-600: #6838EE;
+$purple-700: #5925DB;
+$purple-800: #4A1FB7;
+$purple-900: #194084;
+
+
+[data-layout-mode="dark"] {
+  $purple-25: #194084;
+  $purple-50: #4A1FB7;
+  $purple-100: #5925DB;
+  $purple-200: #6838EE;
+  $purple-300: #7959F8;
+  $purple-400: #9A89FB;
+  $purple-500: #BCB4FD;
+  $purple-600: #D9D5FE;
+  $purple-700: #EAE8FE;
+  $purple-800: #F3F3FF;
+  $purple-900: #FAF9FF;
+  }
+
+  $purples: (
+    "25": $purple-25,
+    "50": $purple-50,
+    "100": $purple-100,
+    "200": $purple-200,
+    "300": $purple-300,
+    "400": $purple-400,
+    "500": $purple-500,
+    "600": $purple-600,
+    "700": $purple-700,
+    "800": $purple-800,
+    "900": $purple-900
+);
+
+$blue-gray-25: #FBFBFD;
+$blue-gray-50: #F8F8FB;
+$blue-gray-100: #EAEBF5;
+$blue-gray-200: #D5D9EB;
+$blue-gray-300: #AFB5D9;
+$blue-gray-400: #707ABC;
+$blue-gray-500: #4E5AA6;
+$blue-gray-600: #3E4783;
+$blue-gray-700: #353E72;
+$blue-gray-800: #283056;
+$blue-gray-900: #101222;
+
+
+[data-layout-mode="dark"] {
+  $blue-gray-25: #101222;
+  $blue-gray-50: #283056;
+  $blue-gray-100: #353E72;
+  $blue-gray-200: #3E4783;
+  $blue-gray-300: #4E5AA6;
+  $blue-gray-400: #707ABC;
+  $blue-gray-500: #AFB5D9;
+  $blue-gray-600: #D5D9EB;
+  $blue-gray-700: #EAEBF5;
+  $blue-gray-800: #F8F8FB;
+  $blue-gray-900: #FBFBFD;
+  }
+
+  $blue-grays: (
+    "25": $blue-gray-25,
+    "50": $blue-gray-50,
+    "100": $blue-gray-100,
+    "200": $blue-gray-200,
+    "300": $blue-gray-300,
+    "400": $blue-gray-400,
+    "500": $blue-gray-500,
+    "600": $blue-gray-600,
+    "700": $blue-gray-700,
+    "800": $blue-gray-800,
+    "900": $blue-gray-900
+);
+
+$pink-25: #FDF6FB;
+$pink-50: #FDF1F9;
+$pink-100: #FCE6F5;
+$pink-200: #FBCEEE;
+$pink-300: #F9A7DF;
+$pink-400: #F570C7;
+$pink-500: #ED46BB;
+$pink-600: #DC2590;
+$pink-700: #5925DB;
+$pink-800: #9E155E;
+$pink-900: #841651;
+
+
+[data-layout-mode="dark"] {
+  $pink-25: #841651;
+  $pink-50: #9E155E;
+  $pink-100: #5925DB;
+  $pink-200: #DC2590;
+  $pink-300: #ED46BB;
+  $pink-400: #F570C7;
+  $pink-500: #F9A7DF;
+  $pink-600: #FBCEEE;
+  $pink-700: #FCE6F5;
+  $pink-800: #FDF1F9;
+  $pink-900: #FDF6FB;
+  }
+
+  $pinks: (
+    "25": $pink-25,
+    "50": $pink-50,
+    "100": $pink-100,
+    "200": $pink-200,
+    "300": $pink-300,
+    "400": $pink-400,
+    "500": $pink-500,
+    "600": $pink-600,
+    "700": $pink-700,
+    "800": $pink-800,
+    "900": $pink-900
+);
+
+$rose-25: #FFF4F6;
+$rose-50: #FEF1F2;
+$rose-100: #FFE3E7;
+$rose-200: #FECCD5;
+$rose-300: #FEA2B3;
+$rose-400: #FC6F8D;
+$rose-500: #F53D68;
+$rose-600: #E31A53;
+$rose-700: #C00F47;
+$rose-800: #A10F42;
+$rose-900: #89113D;
+
+
+[data-layout-mode="dark"] {
+  $rose-25: #89113D;
+  $rose-50: #A10F42;
+  $rose-100: #C00F47;
+  $rose-200: #E31A53;
+  $rose-300: #F53D68;
+  $rose-400: #FC6F8D;
+  $rose-500: #FEA2B3;
+  $rose-600: #FECCD5;
+  $rose-700: #FFE3E7;
+  $rose-800: #FEF1F2;
+  $rose-900: #FFF4F6;
+  }
+
+  $roses: (
+    "25": $rose-25,
+    "50": $rose-50,
+    "100": $rose-100,
+    "200": $rose-200,
+    "300": $rose-300,
+    "400": $rose-400,
+    "500": $rose-500,
+    "600": $rose-600,
+    "700": $rose-700,
+    "800": $rose-800,
+    "900": $rose-900
+);
+
+
+
+
+
+ 
+
+
+
 // scss-docs-end gray-colors-map
 // fusv-enable
 

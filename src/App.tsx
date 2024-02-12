@@ -19,6 +19,7 @@ import Spinners from "Components/Common/Spinner";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import appStore from "slices/store";
+
 const getLayout = (layoutType: any) => {
   let Layout = VerticalLayout;
   switch (layoutType) {

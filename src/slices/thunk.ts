@@ -1,7 +1,3 @@
-
-//Calendar
-export * from "./calendar/thunk";
-
 //Layout
 export * from "./layouts/thunk";
 // Login
