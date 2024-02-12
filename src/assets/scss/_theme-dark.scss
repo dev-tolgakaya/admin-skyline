@@ -1,184 +1,332 @@
 // :root CSS dark variables
 
 [data-layout-mode="dark"] {
-    $primary-dark:red;
+  $gray-25: #18191a;
+  $gray-50: #272a30;
+  $gray-100: #353739;
+  $gray-200: #55585b;
+  $gray-250: #787b7f;
+  $gray-300: #9ca1a5;
+  $gray-400: #c4c7ca;
+  $gray-500: #dce0e5;
+  $gray-600: #eaecf0;
+  $gray-700: #edeff2;
+  $gray-800: #f9fafb;
+  $gray-900: #fcfcfd;
 
-    // Color system - Dark Mode only
-    $gray-100: #212529;
-    $gray-200: #2a3042;
-    $gray-300: #32394e;
-    $gray-400: #a6b0cf;
-    $gray-500: #bfc8e2;
-    $gray-600: #c3cbe4;
-    $gray-700: #f6f6f6;
-    $gray-800: #eff2f7;
-    $gray-900: #f8f9fa;
+  $grays: (
+    "25": $gray-25,
+    "50": $gray-50,
+    "100": $gray-100,
+    "200": $gray-200,
+    "250": $gray-250,
+    "300": $gray-300,
+    "400": $gray-400,
+    "500": $gray-500,
+    "600": $gray-600,
+    "700": $gray-700,
+    "800": $gray-800,
+    "900": $gray-900,
+  );
 
-    $grays: (
-        "100": $gray-100,
-        "200": $gray-200,
-        "300": $gray-300,
-        "400": $gray-400,
-        "500": $gray-500,
-        "600": $gray-600,
-        "700": $gray-700,
-        "800": $gray-800,
-        "900": $gray-900 
-    );
+  $green-25: #054e31;
+  $green-50: #055f3a;
+  $green-100: #027947;
+  $green-200: #039754;
+  $green-300: #12b669;
+  $green-400: #31d583;
+  $green-500: #6be9a6;
+  $green-600: #a6f4c5;
+  $green-700: #d0fadf;
+  $green-800: #ebfdf2;
+  $green-900: #f5fef9;
 
-    // Prefix for :root CSS variables
-    @each $color,
-    $value in $grays {
-        --#{$prefix}gray-#{$color}: #{$value};
+  $greens: (
+    "25": $green-25,
+    "50": $green-50,
+    "100": $green-100,
+    "200": $green-200,
+    "300": $green-300,
+    "400": $green-400,
+    "500": $green-500,
+    "600": $green-600,
+    "700": $green-700,
+    "800": $green-800,
+    "900": $green-900,
+  );
+
+    // @each $color, $value in $grays {
+    //   --#{$prefix}gray-#{$color}: #{$value};
+    // }
+
+  @each $colorName, $colorMap in (gray: $grays, green: $greens) {
+    @each $shade, $color in $colorMap {
+      --#{$prefix}#{unquote($colorName)}-#{$shade}: #{$color};
     }
+  }
 
-    --#{$prefix}body-bg:                                    #17191C;
-    --#{$prefix}body-bg-rgb:                                rgb(34, 39, 54);
-    --#{$prefix}body-color-rgb:                             #{to-rgb($gray-400)};
-    --#{$prefix}body-color:                                 #{$gray-400};
-    --#{$prefix}secondary-color:                            #{$gray-600};
-    --#{$prefix}heading-color:                              #{$gray-700};
-    --#{$prefix}border-color:                               #{$gray-300};
-    --#{$prefix}custom-white:                               #{$gray-200};
+//   $green-25: #054e31;
+//   $green-50: #055f3a;
+//   $green-100: #027947;
+//   $green-200: #039754;
+//   $green-300: #12b669;
+//   $green-400: #31d583;
+//   $green-500: #6be9a6;
+//   $green-600: #a6f4c5;
+//   $green-700: #d0fadf;
+//   $green-800: #ebfdf2;
+//   $green-900: #f5fef9;
 
-    --#{$prefix}input-border-color:                         #{$gray-300};
-    --#{$prefix}input-focus-border-color:                   #{lighten($gray-300, 4%)};
-    --#{$prefix}hr-border-color:                            #{$gray-300};
-    --#{$variable-prefix}form-check-input-border:           #{lighten($gray-300, 4%)};
+  $error-25: #7a2619;
+  $error-50: #901f17;
+  $error-100: #b32218;
+  $error-200: #d92c20;
+  $error-300: #f04437;
+  $error-400: #f97066;
+  $error-500: #fca19b;
+  $error-600: #fecdc9;
+  $error-700: #fee3e1;
+  $error-800: #fef2f1;
+  $error-900: #fefafa;
 
-    // component variable
-    --#{$prefix}light:                                      #{$gray-300};
-    --#{$prefix}light-rgb:                                  #{to-rgb($gray-300)};
-    --#{$prefix}dark:                                       #{$gray-700};
-    --#{$prefix}dark-rgb:                                   #{to-rgb($gray-700)};
+  $warning-25: #792d0d;
+  $warning-50: #93370c;
+  $warning-100: #b54707;
+  $warning-200: #db6803;
+  $warning-300: #f78f08;
+  $warning-400: #fcb022;
+  $warning-500: #fec84a;
+  $warning-600: #fede88;
+  $warning-700: #feefc6;
+  $warning-800: #fff9eb;
+  $warning-900: #fffcf4;
 
-    //topbar
-    --#{$prefix}heading-bg:                                 #262b3c;
-    --#{$prefix}header-item-color:                          #{$gray-400};
-    --#{$prefix}topbar-search-bg:                           #{$gray-200};
+  $blue-25: #194084;
+  $blue-50: #1849a9;
+  $blue-100: #175cd3;
+  $blue-200: #156fee;
+  $blue-300: #2e90fa;
+  $blue-400: #53b0fd;
+  $blue-500: #84caff;
+  $blue-600: #b2ddff;
+  $blue-700: #d1e9ff;
+  $blue-800: #eff8ff;
+  $blue-900: #f4f9ff;
 
-    --#{$prefix}heading-dark-bg:                            #{$primary};
+  $purple-25: #194084;
+  $purple-50: #4a1fb7;
+  $purple-100: #5925db;
+  $purple-200: #6838ee;
+  $purple-300: #7959f8;
+  $purple-400: #9a89fb;
+  $purple-500: #bcb4fd;
+  $purple-600: #d9d5fe;
+  $purple-700: #eae8fe;
+  $purple-800: #f3f3ff;
+  $purple-900: #faf9ff;
 
-    --#{$prefix}boxed-body-bg:                              #F7F7F7;
+  $blue-gray-25: #101222;
+  $blue-gray-50: #283056;
+  $blue-gray-100: #353e72;
+  $blue-gray-200: #3e4783;
+  $blue-gray-300: #4e5aa6;
+  $blue-gray-400: #707abc;
+  $blue-gray-500: #afb5d9;
+  $blue-gray-600: #d5d9eb;
+  $blue-gray-700: #eaebf5;
+  $blue-gray-800: #f8f8fb;
+  $blue-gray-900: #fbfbfd;
 
-    --#{$prefix}topnav-bg:                                  #282e3f;
-    --#{$prefix}menu-item-color:                            #a6b0cf;
+  $pink-25: #841651;
+  $pink-50: #9e155e;
+  $pink-100: #5925db;
+  $pink-200: #dc2590;
+  $pink-300: #ed46bb;
+  $pink-400: #f570c7;
+  $pink-500: #f9a7df;
+  $pink-600: #fbceee;
+  $pink-700: #fce6f5;
+  $pink-800: #fdf1f9;
+  $pink-900: #fdf6fb;
 
-    //footer
-    --#{$prefix}footer-bg:                                  #262b3c;
-    --#{$prefix}footer-color:                               #{$gray-400};
+  $pinks-dark: (
+    "25": $pink-25,
+    "50": $pink-50,
+    "100": $pink-100,
+    "200": $pink-200,
+    "300": $pink-300,
+    "400": $pink-400,
+    "500": $pink-500,
+    "600": $pink-600,
+    "700": $pink-700,
+    "800": $pink-800,
+    "900": $pink-900,
+  );
 
-    .card{
-        --#{$prefix}card-bg:                                    #{$gray-200};
-    }
+  //   @each $color,
+  //   $value in $pinks-dark {
+  //       --#{$prefix}pink-#{$color}: #{$value};
+  //   }
 
-    .list-group {
-        --#{$prefix}list-group-bg:                                     #{$gray-200};
-        --#{$prefix}list-group-color:                                  #{$gray-900};
-        --#{$prefix}list-group-border-color:                           #{$gray-300};
-    }
+  $rose-25: #89113d;
+  $rose-50: #a10f42;
+  $rose-100: #c00f47;
+  $rose-200: #e31a53;
+  $rose-300: #f53d68;
+  $rose-400: #fc6f8d;
+  $rose-500: #fea2b3;
+  $rose-600: #feccd5;
+  $rose-700: #ffe3e7;
+  $rose-800: #fef1f2;
+  $rose-900: #fff4f6;
 
-    .btn-light {
-        --#{$prefix}btn-color:                                         #{$gray-600};
-        --#{$prefix}btn-bg:                                            #{$gray-300};
-        --#{$prefix}btn-border-color:                                  #{$gray-300};
-    }
+  --#{$prefix}header-bg: #17191c;
+  --#{$prefix}body-bg: #17191c;
+  --#{$prefix}body-bg-rgb: rgb(34, 39, 54);
+  --#{$prefix}body-color-rgb: #{to-rgb($gray-400)};
+  --#{$prefix}body-color: #{$gray-400};
+  --#{$prefix}secondary-color: #{$gray-600};
+  --#{$prefix}heading-color: #{$gray-700};
+  --#{$prefix}border-color: #{$gray-300};
+  --#{$prefix}custom-white: #{$gray-200};
 
-    .btn-outline-light {
-        --#{$prefix}btn-color:                                         #{$gray-600};
-        --#{$prefix}btn-border-color:                                  #{$gray-300};
-    }
+  --#{$prefix}input-border-color: #{$gray-300};
+  --#{$prefix}input-focus-border-color: #{lighten($gray-300, 4%)};
+  --#{$prefix}hr-border-color: #{$gray-300};
+  --#{$variable-prefix}form-check-input-border: #{lighten($gray-300, 4%)};
 
-    .btn-light,
-    .btn-outline-light {
-        --#{$prefix}btn-hover-color:                        #{$gray-600};
-        --#{$prefix}btn-hover-bg:                           #{$gray-300};
-        --#{$prefix}btn-hover-border-color:                 #{$gray-300};
-        --#{$prefix}btn-active-color:                       #{$gray-600};
-        --#{$prefix}btn-active-bg:                          #{$gray-300};
-        --#{$prefix}btn-active-border-color:                #{$gray-300};
-        --#{$prefix}btn-focus-shadow-rgb:                   #{to-rgb($gray-300)};
-    }
+  // component variable
+  --#{$prefix}light: #{$gray-300};
+  --#{$prefix}light-rgb: #{to-rgb($gray-300)};
+  --#{$prefix}dark: #{$gray-700};
+  --#{$prefix}dark-rgb: #{to-rgb($gray-700)};
 
-    .btn-dark {
-        --#{$prefix}btn-bg:                                 #{$gray-400};
-        --#{$prefix}btn-border-color:                       #{$gray-400};
-        --#{$prefix}btn-hover-bg:                           #{$gray-400};
-    }
+  //topbar
+  --#{$prefix}heading-bg: #262b3c;
+  --#{$prefix}header-item-color: #{$gray-400};
+  --#{$prefix}topbar-search-bg: #{$gray-200};
 
-    .btn-outline-dark {
-        --#{$prefix}btn-color:                              #{$gray-400};
-        --#{$prefix}btn-border-color:                       #{$gray-400};
-    }
-    
-    .btn-dark,
-    .btn-outline-dark {
-        --#{$prefix}btn-hover-bg:                           #{$gray-400};
-        --#{$prefix}btn-hover-border-color:                 #{$gray-400};
-        --#{$prefix}btn-active-bg:                          #{$gray-400};
-        --#{$prefix}btn-active-border-color:                #{$gray-400};
-        --#{$prefix}btn-focus-shadow-rgb:                   #{to-rgb($gray-600)};
-    }
+  --#{$prefix}heading-dark-bg: #{$primary};
 
-    .dropdown-menu {
-        --#{$prefix}dropdown-bg:                            #{$gray-200};
-        --#{$prefix}dropdown-link-color:                    #{$gray-400};
-        --#{$prefix}dropdown-border-color:                  #{$gray-300};
-        --#{$prefix}dropdown-border-width:                  1px;
-        --#{$prefix}dropdown-divider-bg:                    #{$gray-300};
-        --#{$prefix}dropdown-link-hover-bg:                 #{$gray-300};
-        --#{$prefix}dropdown-link-hover-color:              #e9ecef;
-        --#{$prefix}dropdown-link-active-bg:                #{$gray-300};
-        --#{$prefix}dropdown-link-active-color:             #e9ecef;
-    }
+  --#{$prefix}boxed-body-bg: #f7f7f7;
 
-    
-    .modal {
-        --#{$prefix}modal-bg:                                           #{$gray-200};
-    }
-    
-    .offcanvas,
-    .offcanvas-lg,
-    .offcanvas-md,
-    .offcanvas-sm,
-    .offcanvas-xl,
-    .offcanvas-xxl{
-        --#{$prefix}offcanvas-bg:                                       #{$gray-200};
-    }
-    
-    .nav-tabs {
-        --#{$prefix}nav-tabs-link-active-bg:                            #{$gray-200};
-        --#{$prefix}nav-tabs-link-active-border-color:                  #{lighten($gray-300, 4%)};
-        --#{$prefix}nav-tabs-border-color:                              #{lighten($gray-300, 4%)};
-        --#{$prefix}nav-tabs-link-hover-border-color:                   #{lighten($gray-300, 4%)};
-        --#{$prefix}nav-tabs-link-active-color:                         #{$primary};
-    }
-    
-    .accordion {
-        --#{$prefix}accordion-active-bg:                                #{rgba($primary, 0.1)};
-    }
-    
-    .toast{
-        --#{$prefix}toast-header-bg:                                    #{$gray-200};
-        --#{$prefix}toast-header-color:                                 #{$gray-600};
-        --#{$prefix}toast-bg:                                           #{$gray-200};
-    }
-    
-    .table {
-        --#{$prefix}table-striped-bg:                                   #{rgba($gray-500, .05)};
-        --#{$prefix}table-hover-bg:                                     #{rgba($gray-500, .05)};
-        --#{$prefix}table-active-bg:                                    #{rgba($gray-500, .05)};
-    }
+  --#{$prefix}topnav-bg: #282e3f;
+  --#{$prefix}menu-item-color: #a6b0cf;
 
-    .table-light {
-        --#{$prefix}table-color:                                        #{$gray-400};
-        --#{$prefix}table-bg:                                           #{$gray-300};
-        --#{$prefix}table-border-color:                                 #{$gray-300};
-    }
-    
-    .table-dark {
-        --#{$prefix}table-color:                                        #{$gray-400};
-        --#{$prefix}table-bg:                                           #{$gray-300};
-        --#{$prefix}table-border-color:                                 #{lighten($gray-300, 4%)};
-    }
+  //footer
+  --#{$prefix}footer-bg: #262b3c;
+  --#{$prefix}footer-color: #{$gray-400};
+
+  .card {
+    --#{$prefix}card-bg: #{$gray-200};
+  }
+
+  .list-group {
+    --#{$prefix}list-group-bg: #{$gray-200};
+    --#{$prefix}list-group-color: #{$gray-900};
+    --#{$prefix}list-group-border-color: #{$gray-300};
+  }
+
+  .btn-light {
+    --#{$prefix}btn-color: #{$gray-600};
+    --#{$prefix}btn-bg: #{$gray-300};
+    --#{$prefix}btn-border-color: #{$gray-300};
+  }
+
+  .btn-outline-light {
+    --#{$prefix}btn-color: #{$gray-600};
+    --#{$prefix}btn-border-color: #{$gray-300};
+  }
+
+  .btn-light,
+  .btn-outline-light {
+    --#{$prefix}btn-hover-color: #{$gray-600};
+    --#{$prefix}btn-hover-bg: #{$gray-300};
+    --#{$prefix}btn-hover-border-color: #{$gray-300};
+    --#{$prefix}btn-active-color: #{$gray-600};
+    --#{$prefix}btn-active-bg: #{$gray-300};
+    --#{$prefix}btn-active-border-color: #{$gray-300};
+    --#{$prefix}btn-focus-shadow-rgb: #{to-rgb($gray-300)};
+  }
+
+  .btn-dark {
+    --#{$prefix}btn-bg: #{$gray-400};
+    --#{$prefix}btn-border-color: #{$gray-400};
+    --#{$prefix}btn-hover-bg: #{$gray-400};
+  }
+
+  .btn-outline-dark {
+    --#{$prefix}btn-color: #{$gray-400};
+    --#{$prefix}btn-border-color: #{$gray-400};
+  }
+
+  .btn-dark,
+  .btn-outline-dark {
+    --#{$prefix}btn-hover-bg: #{$gray-400};
+    --#{$prefix}btn-hover-border-color: #{$gray-400};
+    --#{$prefix}btn-active-bg: #{$gray-400};
+    --#{$prefix}btn-active-border-color: #{$gray-400};
+    --#{$prefix}btn-focus-shadow-rgb: #{to-rgb($gray-600)};
+  }
+
+  .dropdown-menu {
+    --#{$prefix}dropdown-bg: #{$gray-200};
+    --#{$prefix}dropdown-link-color: #{$gray-400};
+    --#{$prefix}dropdown-border-color: #{$gray-300};
+    --#{$prefix}dropdown-border-width: 1px;
+    --#{$prefix}dropdown-divider-bg: #{$gray-300};
+    --#{$prefix}dropdown-link-hover-bg: #{$gray-300};
+    --#{$prefix}dropdown-link-hover-color: #e9ecef;
+    --#{$prefix}dropdown-link-active-bg: #{$gray-300};
+    --#{$prefix}dropdown-link-active-color: #e9ecef;
+  }
+
+  .modal {
+    --#{$prefix}modal-bg: #{$gray-200};
+  }
+
+  .offcanvas,
+  .offcanvas-lg,
+  .offcanvas-md,
+  .offcanvas-sm,
+  .offcanvas-xl,
+  .offcanvas-xxl {
+    --#{$prefix}offcanvas-bg: #{$gray-200};
+  }
+
+  .nav-tabs {
+    --#{$prefix}nav-tabs-link-active-bg: #{$gray-200};
+    --#{$prefix}nav-tabs-link-active-border-color: #{lighten($gray-300, 4%)};
+    --#{$prefix}nav-tabs-border-color: #{lighten($gray-300, 4%)};
+    --#{$prefix}nav-tabs-link-hover-border-color: #{lighten($gray-300, 4%)};
+    --#{$prefix}nav-tabs-link-active-color: #{$primary};
+  }
+
+  .accordion {
+    --#{$prefix}accordion-active-bg: #{rgba($primary, 0.1)};
+  }
+
+  .toast {
+    --#{$prefix}toast-header-bg: #{$gray-200};
+    --#{$prefix}toast-header-color: #{$gray-600};
+    --#{$prefix}toast-bg: #{$gray-200};
+  }
+
+  .table {
+    --#{$prefix}table-striped-bg: #{rgba($gray-500, 0.05)};
+    --#{$prefix}table-hover-bg: #{rgba($gray-500, 0.05)};
+    --#{$prefix}table-active-bg: #{rgba($gray-500, 0.05)};
+  }
+
+  .table-light {
+    --#{$prefix}table-color: #{$gray-400};
+    --#{$prefix}table-bg: #{$gray-300};
+    --#{$prefix}table-border-color: #{$gray-300};
+  }
+
+  .table-dark {
+    --#{$prefix}table-color: #{$gray-400};
+    --#{$prefix}table-bg: #{$gray-300};
+    --#{$prefix}table-border-color: #{lighten($gray-300, 4%)};
+  }
 }
