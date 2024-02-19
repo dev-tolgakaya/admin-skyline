@@ -1,0 +1,12 @@
+@mixin isDark {
+  [data-layout-mode="dark"] & {
+    @content;
+  }
+}
+
+@mixin isLight {
+  [data-layout-mode="light"] & {
+    @content;
+  }
+}
+

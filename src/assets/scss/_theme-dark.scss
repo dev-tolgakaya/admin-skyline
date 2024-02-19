@@ -1,8 +1,9 @@
 // :root CSS dark variables
 
 [data-layout-mode="dark"] {
+  $gray-0: #17191c;
   $gray-25: #18191a;
-  $gray-50: #272a30;
+  $gray-50: #27292f;
   $gray-100: #353739;
   $gray-200: #55585b;
   $gray-250: #787b7f;
@@ -13,8 +14,10 @@
   $gray-700: #edeff2;
   $gray-800: #f9fafb;
   $gray-900: #fcfcfd;
+  $gray-1000: $white;
 
   $grays: (
+    "0": $gray-0,
     "25": $gray-25,
     "50": $gray-50,
     "100": $gray-100,
@@ -27,6 +30,7 @@
     "700": $gray-700,
     "800": $gray-800,
     "900": $gray-900,
+    "1000": $gray-1000,
   );
 
   $green-25: #054e31;
@@ -55,28 +59,6 @@
     "900": $green-900,
   );
 
-    // @each $color, $value in $grays {
-    //   --#{$prefix}gray-#{$color}: #{$value};
-    // }
-
-  @each $colorName, $colorMap in (gray: $grays, green: $greens) {
-    @each $shade, $color in $colorMap {
-      --#{$prefix}#{unquote($colorName)}-#{$shade}: #{$color};
-    }
-  }
-
-//   $green-25: #054e31;
-//   $green-50: #055f3a;
-//   $green-100: #027947;
-//   $green-200: #039754;
-//   $green-300: #12b669;
-//   $green-400: #31d583;
-//   $green-500: #6be9a6;
-//   $green-600: #a6f4c5;
-//   $green-700: #d0fadf;
-//   $green-800: #ebfdf2;
-//   $green-900: #f5fef9;
-
   $error-25: #7a2619;
   $error-50: #901f17;
   $error-100: #b32218;
@@ -88,6 +70,20 @@
   $error-700: #fee3e1;
   $error-800: #fef2f1;
   $error-900: #fefafa;
+
+  $errors: (
+    "25": $error-25,
+    "50": $error-50,
+    "100": $error-100,
+    "200": $error-200,
+    "300": $error-300,
+    "400": $error-400,
+    "500": $error-500,
+    "600": $error-600,
+    "700": $error-700,
+    "800": $error-800,
+    "900": $error-900,
+  );
 
   $warning-25: #792d0d;
   $warning-50: #93370c;
@@ -101,6 +97,20 @@
   $warning-800: #fff9eb;
   $warning-900: #fffcf4;
 
+  $warnings: (
+    "25": $warning-25,
+    "50": $warning-50,
+    "100": $warning-100,
+    "200": $warning-200,
+    "300": $warning-300,
+    "400": $warning-400,
+    "500": $warning-500,
+    "600": $warning-600,
+    "700": $warning-700,
+    "800": $warning-800,
+    "900": $warning-900,
+  );
+
   $blue-25: #194084;
   $blue-50: #1849a9;
   $blue-100: #175cd3;
@@ -112,6 +122,20 @@
   $blue-700: #d1e9ff;
   $blue-800: #eff8ff;
   $blue-900: #f4f9ff;
+
+  $blues: (
+    "25": $blue-25,
+    "50": $blue-50,
+    "100": $blue-100,
+    "200": $blue-200,
+    "300": $blue-300,
+    "400": $blue-400,
+    "500": $blue-500,
+    "600": $blue-600,
+    "700": $blue-700,
+    "800": $blue-800,
+    "900": $blue-900,
+  );
 
   $purple-25: #194084;
   $purple-50: #4a1fb7;
@@ -125,6 +149,20 @@
   $purple-800: #f3f3ff;
   $purple-900: #faf9ff;
 
+  $purples: (
+    "25": $purple-25,
+    "50": $purple-50,
+    "100": $purple-100,
+    "200": $purple-200,
+    "300": $purple-300,
+    "400": $purple-400,
+    "500": $purple-500,
+    "600": $purple-600,
+    "700": $purple-700,
+    "800": $purple-800,
+    "900": $purple-900,
+  );
+
   $blue-gray-25: #101222;
   $blue-gray-50: #283056;
   $blue-gray-100: #353e72;
@@ -136,6 +174,20 @@
   $blue-gray-700: #eaebf5;
   $blue-gray-800: #f8f8fb;
   $blue-gray-900: #fbfbfd;
+
+  $blue-grays: (
+    "25": $blue-gray-25,
+    "50": $blue-gray-50,
+    "100": $blue-gray-100,
+    "200": $blue-gray-200,
+    "300": $blue-gray-300,
+    "400": $blue-gray-400,
+    "500": $blue-gray-500,
+    "600": $blue-gray-600,
+    "700": $blue-gray-700,
+    "800": $blue-gray-800,
+    "900": $blue-gray-900,
+  );
 
   $pink-25: #841651;
   $pink-50: #9e155e;
@@ -149,7 +201,7 @@
   $pink-800: #fdf1f9;
   $pink-900: #fdf6fb;
 
-  $pinks-dark: (
+  $pinks: (
     "25": $pink-25,
     "50": $pink-50,
     "100": $pink-100,
@@ -163,11 +215,6 @@
     "900": $pink-900,
   );
 
-  //   @each $color,
-  //   $value in $pinks-dark {
-  //       --#{$prefix}pink-#{$color}: #{$value};
-  //   }
-
   $rose-25: #89113d;
   $rose-50: #a10f42;
   $rose-100: #c00f47;
@@ -180,15 +227,46 @@
   $rose-800: #fef1f2;
   $rose-900: #fff4f6;
 
-  --#{$prefix}header-bg: #17191c;
-  --#{$prefix}body-bg: #17191c;
-  --#{$prefix}body-bg-rgb: rgb(34, 39, 54);
-  --#{$prefix}body-color-rgb: #{to-rgb($gray-400)};
-  --#{$prefix}body-color: #{$gray-400};
-  --#{$prefix}secondary-color: #{$gray-600};
-  --#{$prefix}heading-color: #{$gray-700};
-  --#{$prefix}border-color: #{$gray-300};
-  --#{$prefix}custom-white: #{$gray-200};
+  $roses: (
+    "25": $rose-25,
+    "50": $rose-50,
+    "100": $rose-100,
+    "200": $rose-200,
+    "300": $rose-300,
+    "400": $rose-400,
+    "500": $rose-500,
+    "600": $rose-600,
+    "700": $rose-700,
+    "800": $rose-800,
+    "900": $rose-900,
+  );
+
+  $stroke-dark: #3b3b3b;
+
+  @each $colorName,
+    $colorMap
+      in (
+        gray: $grays,
+        green: $greens,
+        error: $errors,
+        warning: $warnings,
+        blue: $blues,
+        purple: $purples,
+        blue-gray: $blue-grays,
+        pink: $pinks,
+        rose: $roses
+      )
+  {
+    @each $shade, $color in $colorMap {
+      --#{$prefix}#{unquote($colorName)}-#{$shade}: #{$color};
+    }
+  }
+
+  --#{$prefix}body-bg: #{$gray-0};
+  --#{$prefix}body-color: #{$gray-1000};
+  --#{$prefix}border-color: #{$stroke-dark};
+
+  --#{$prefix}header-bg: #{$gray-0};
 
   --#{$prefix}input-border-color: #{$gray-300};
   --#{$prefix}input-focus-border-color: #{lighten($gray-300, 4%)};

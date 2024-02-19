@@ -6,7 +6,6 @@ Website: https://themesbrand.com/
 Contact: themesbrand@gmail.com
 File: Main Css File
 */
-
 //Fonts
 @import "custom/fonts/fonts";
 
@@ -18,6 +17,10 @@ File: Main Css File
 
 @import "theme-light";
 @import "theme-dark";
+
+@import "mixins";
+
+
 
 // Structure
 @import "custom/structure/general";
@@ -70,7 +73,6 @@ File: Main Css File
 @import "custom/plugins/google-map";
 @import "custom/plugins/vector-maps";
 @import "custom/plugins/leaflet-maps";
-
 
 // Pages
 @import "custom/pages/authentication";

@@ -41,7 +41,6 @@ export const changeLayoutMode = (layoutMode: any) => async (dispatch: any) => {
   try {
     changeBodyAttribute("data-layout-mode", layoutMode);
     dispatch(changeLayoutModeAction(layoutMode));
-    debugger;
   } catch (error) {}
 };
 

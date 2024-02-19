@@ -1,0 +1,134 @@
+@import "../../../assets/scss/app.scss";
+
+@mixin reset {
+  margin: 0;
+  padding: 0;
+}
+
+.display-l {
+  font-family: $font-family-inter;
+  font-size: $display-l-font-size;
+  font-weight: 600;
+  line-height: $display-l-line-height;
+}
+
+.display-m {
+  font-family: $font-family-inter;
+  font-size: $display-m-font-size;
+  font-weight: 400;
+  line-height: $display-m-line-height;
+}
+
+.heading-l {
+  font-family: $font-family-inter;
+  font-size: $heading-l-font-size;
+  font-weight: 600;
+  line-height: $heading-l-line-height;
+}
+
+.heading-m {
+  font-family: $font-family-inter;
+  font-size: $heading-m-font-size;
+  font-weight: 600;
+  line-height: $heading-m-line-height;
+}
+
+.heading-s {
+  font-family: $font-family-inter;
+  font-size: $heading-s-font-size;
+  font-weight: 600;
+  line-height: $heading-s-line-height;
+}
+
+.heading-xs {
+  font-family: $font-family-inter;
+  font-size: $heading-xs-font-size;
+  font-weight: 600;
+  line-height: $heading-xs-line-height;
+}
+
+.button-basic {
+  font-family: $font-family-inter;
+  font-size: $default-button-font-size;
+  font-weight: 600;
+  line-height: $default-button-line-height;
+  letter-spacing: $default-button-latter-spacing;
+}
+
+.button-link {
+  font-family: $font-family-inter;
+  font-size: $button-link-font-size;
+  font-weight: 600;
+  line-height: $button-link-line-height;
+  text-decoration-line: underline;
+}
+
+.subtitle-l {
+  font-family: $font-family-karla;
+  font-size: $subtitle-l-font-size;
+  font-weight: 700;
+  line-height: $subtitle-l-line-height;
+}
+
+.subtitle-m {
+  font-family: $font-family-karla;
+  font-size: $subtitle-m-font-size;
+  font-weight: 700;
+  line-height: $subtitle-m-line-height;
+}
+
+.subtitle-s {
+  font-family: $font-family-karla;
+  font-size: $subtitle-s-font-size;
+  font-weight: 500;
+  line-height: $subtitle-s-line-height;
+}
+
+.body-500 {
+  font-family: $font-family-inter;
+  font-size: $body-500-font-size;
+  font-weight: 450;
+  line-height: $body-500-line-height;
+  letter-spacing: $body-500-latter-spacing;
+}
+
+.body-400 {
+  font-family: $font-family-inter;
+  font-size: $body-400-font-size;
+  font-weight: 400;
+  line-height: $body-400-line-height;
+  letter-spacing: $body-400-latter-spacing;
+}
+
+.body-s {
+  font-family: $font-family-inter;
+  font-size: $body-s-font-size;
+  font-weight: 500;
+  line-height: $body-s-line-height;
+  letter-spacing: $body-s-latter-spacing;
+}
+
+.caption-400 {
+  font-family: $font-family-inter;
+  font-size: $caption-400-font-size;
+  font-weight: 400;
+  line-height: $caption-400-line-height;
+  letter-spacing: $caption-400-latter-spacing;
+}
+
+.caption-600 {
+  font-family: $font-family-karla;
+  font-size: $caption-600-font-size;
+  font-weight: 700;
+  line-height: $caption-600-line-height;
+  letter-spacing: $caption-600-latter-spacing;
+}
+
+.caption-badge {
+  font-family: $font-family-karla;
+  font-size: $caption-badge-font-size;
+  font-weight: 700;
+  line-height: $caption-badge-line-height;
+  letter-spacing: $caption-badge-latter-spacing;
+  text-transform: uppercase;
+}

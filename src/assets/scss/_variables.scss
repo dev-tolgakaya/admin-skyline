@@ -1,63 +1,9 @@
+$white: #fff;
+$primary-dark: #17191c;
+$stroke-light: #d0d5dd;
+
 $variable-prefix: bs-;
 $prefix: $variable-prefix;
-
-$white: #ffffff;
-$primary-dark: #17191c;
-
-$header-height: 80px;
-
-$sidebar-width: 240px;
-$sidebar-collapsed-width: 104px;
-
-$sidebar-bg: $primary-dark;
-$sidebar-menu-item-color: #f4f4f4;
-$sidebar-menu-sub-item-color: #545a6d;
-$sidebar-menu-item-icon-color: #7f8387;
-$sidebar-menu-item-hover-color: $primary-dark;
-
-$sidebar-menu-item-hover-bg-color: $sidebar-menu-item-color;
-$sidebar-menu-item-active-bg-color: $sidebar-menu-item-color;
-$sidebar-menu-item-active-color: $sidebar-menu-item-hover-color;
-
-// Topbar - Deafult Light
-$header-bg: var(--#{$prefix}green-300);
-$header-item-color: #17191c;
-
-// Footer
-$footer-height: 60px;
-$footer-bg: var(--#{$prefix}footer-bg);
-$footer-color: var(--#{$prefix}footer-color);
-
-// Horizontal nav
-$topnav-bg: var(--#{$prefix}topnav-bg);
-
-$menu-item-color: var(--#{$prefix}menu-item-color);
-$menu-item-active-color: #556ee6;
-
-// Right Sidebar
-$rightbar-width: 280px;
-
-// Display
-$display-none: none;
-$display-block: block;
-
-// Brand
-$navbar-brand-box-width: $sidebar-width;
-
-// Boxed layout width
-$boxed-layout-width: 1300px;
-$boxed-body-bg: #f7f7f7;
-
-// Font Weight
-$fw-medium: 500;
-$font-weight-semibold: 600;
-
-// apex charts
-$apex-grid-color: #f8f9fa;
-
-// table
-$table-head-bg: $gray-100;
-$table-dark-border-color: tint-color($gray-800, 7.5%);
 
 $green-25: #f5fef9;
 $green-50: #ebfdf2;
@@ -85,6 +31,7 @@ $greens: (
   "900": $green-900,
 );
 
+$gray-0: $white;
 $gray-25: #fbfcfc;
 $gray-50: #f8f9fb;
 $gray-100: #eceef2;
@@ -100,6 +47,7 @@ $gray-900: #18191a;
 $gray-1000: $primary-dark;
 
 $grays: (
+  "0": $gray-0,
   "25": $gray-25,
   "50": $gray-50,
   "100": $gray-100,
@@ -112,9 +60,12 @@ $grays: (
   "700": $gray-700,
   "800": $gray-800,
   "900": $gray-900,
+  "1000": $gray-1000,
 );
 
-
+// table
+$table-head-bg: $gray-100;
+$table-dark-border-color: tint-color($gray-800, 7.5%);
 
 $error-25: #fefafa;
 $error-50: #fef2f1;
@@ -298,12 +249,12 @@ $roses: (
   "900": $rose-900,
 );
 
-$primary: $blue;
+$primary: $blue-25;
 $secondary: $gray-600;
-$success: $green;
-$info: $cyan;
-$warning: $yellow;
-$danger: $red;
+$success: $green-25;
+$info: $warning-25;
+$warning: $warning-100;
+$danger: $error-100;
 $light: $gray-200;
 $dark: $gray-800;
 // scss-docs-start theme-colors-map
@@ -314,10 +265,120 @@ $theme-colors: (
   "info": $info,
   "warning": $warning,
   "danger": $danger,
-  "pink": $pink,
+  "pink": $pink-100,
   "light": $light,
   "dark": $dark,
 );
+
+$body-bg: $white;
+$body-color: $primary-dark;
+$boxed-body-bg: #f7f7f7;
+
+$font-family-inter: "Inter", sans-serif;
+$font-family-karla: "Karla", sans-serif;
+
+$base-font-size: 16px;
+
+$display-l-font-size: 52px;
+$display-m-font-size: 40px;
+$heading-l-font-size: 32px;
+$heading-m-font-size: 28px;
+$heading-s-font-size: 24px;
+$heading-xs-font-size: 20px;
+$default-button-font-size: $base-font-size;
+$button-link-font-size: $base-font-size;
+$subtitle-l-font-size: 32px;
+$subtitle-m-font-size: 20px;
+$subtitle-s-font-size: $base-font-size;
+$body-500-font-size: $base-font-size;
+$body-400-font-size: $base-font-size;
+$body-s-font-size: 14px;
+$caption-400-font-size: 13px;
+$caption-600-font-size: 12px;
+$caption-badge-font-size: 13px;
+
+$base-font-line-height: 24px;
+
+$display-l-line-height: 68px;
+$display-m-line-height: 52px;
+$heading-l-line-height: 40px;
+$heading-m-line-height: 36px;
+$heading-s-line-height: 36px;
+$heading-xs-line-height: 30px;
+$default-button-line-height: $base-font-line-height;
+$button-link-line-height: $base-font-line-height;
+$subtitle-l-line-height: 28px;
+$subtitle-m-line-height: 22.4px;
+$subtitle-s-line-height: 22.4px;
+$body-500-line-height: $base-font-line-height;
+$body-400-line-height: $base-font-line-height;
+$body-s-line-height: 20px;
+$caption-400-line-height: 18.2px;
+$caption-600-line-height: 21.6px;
+$caption-badge-line-height: 23.4px;
+
+$default-button-latter-spacing: 0.16px;
+$body-500-latter-spacing: 0.16px;
+$body-400-latter-spacing: 0.16px;
+$body-s-latter-spacing: 0.14px;
+$caption-400-latter-spacing: 0.26px;
+$caption-600-latter-spacing: 0.24px;
+$caption-badge-latter-spacing: 1.3px;
+
+$font-weight-default: 400;
+$font-medium-450: 450;
+$font-medium: 500;
+$font-weight-bold: 700;
+
+$header-height: 80px;
+
+$sidebar-width: 240px;
+$sidebar-collapsed-width: 104px;
+
+$sidebar-bg: $primary-dark;
+$sidebar-menu-item-color: #f4f4f4;
+$sidebar-menu-sub-item-color: #545a6d;
+$sidebar-menu-item-icon-color: #7f8387;
+$sidebar-menu-item-hover-color: $primary-dark;
+
+$sidebar-menu-item-hover-bg-color: $sidebar-menu-item-color;
+$sidebar-menu-item-active-bg-color: $sidebar-menu-item-color;
+$sidebar-menu-item-active-color: $sidebar-menu-item-hover-color;
+
+// Topbar - Deafult Light
+$header-bg: #f7f7f7;
+$header-item-color: #17191c;
+
+// Footer
+$footer-height: 60px;
+$footer-bg: var(--#{$prefix}footer-bg);
+$footer-color: var(--#{$prefix}footer-color);
+
+// Horizontal nav
+$topnav-bg: var(--#{$prefix}topnav-bg);
+
+$menu-item-color: var(--#{$prefix}menu-item-color);
+$menu-item-active-color: #556ee6;
+
+// Right Sidebar
+$rightbar-width: 280px;
+
+// Display
+$display-none: none;
+$display-block: block;
+
+// Brand
+$navbar-brand-box-width: $sidebar-width;
+
+// Boxed layout width
+$boxed-layout-width: 1300px;
+
+// Font Weight
+$fw-medium: 500;
+$font-weight-semibold: 600;
+
+// apex charts
+$apex-grid-color: #f8f9fa;
 
 // Gradient
 //
@@ -364,8 +425,6 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
-$body-bg: #f7f7f7;
-$body-color: $gray-700;
 $body-text-align: null;
 
 // Links

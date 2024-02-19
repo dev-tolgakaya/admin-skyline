@@ -8,10 +8,13 @@
   right: 0;
   left: $sidebar-width;
   z-index: 1002;
-  // background-color: $header-bg;
+  background-color: var(--#{$prefix}header-bg);
   padding: 0px 2rem;
-  border-bottom: 1px solid #d0d5dd;
-  background-color: var(--#{$prefix}green-300);
+  border-bottom: 1px solid var(--#{$prefix}border-color);
+  height: $header-height !important;
+  @include isDark{
+    border-left: 1px solid var(--#{$prefix}border-color);
+  }
 }
 
 .navbar-header {
@@ -21,7 +24,6 @@
   align-items: center;
   margin: 0 auto;
   height: $header-height;
-  
   &.searchBar {
     .searchBarContainer {
       width: 100%;
@@ -30,7 +32,7 @@
       padding: 0.75rem 0.5rem;
       border-radius: 0.25rem;
       border: 1px solid $primary-dark;
-      background-color: "#FFFFFF";
+      background-color: $white;
       .searchBarInput {
         border: none !important;
         background-color: transparent;
@@ -59,7 +61,7 @@
       list-style: none;
       > li {
         &.active {
-          border-bottom: 2px solid $primary-dark;
+          border-bottom: 2px solid var(--#{$prefix}gray-1000);
         }
         div {
           padding: 1rem 1px;
@@ -67,8 +69,8 @@
       }
 
       a {
-        color: #333740;
-        font-family: Karla;
+        color: var(--#{$prefix}primary-dark);
+        font-family: $font-family-karla;
         font-size: 1rem;
         font-style: normal;
         font-weight: 500;
@@ -99,6 +101,9 @@
   gap: 8px;
   border-bottom: 1px solid #3b3b3b;
   height: 80px;
+  @include isDark{
+    border-right: 1px solid var(--#{$prefix}border-color);
+  }
 }
 .navbar-brand-box-bottom {
   padding: 0 1.5rem;
@@ -108,6 +113,9 @@
   gap: 24px;
   border-top: 1px solid #3b3b3b;
   height: 80px;
+  @include isDark{
+    border-right: 1px solid var(--#{$prefix}border-color);
+  }
 }
 
 @media (max-width: 992px) {
@@ -208,3 +216,5 @@
     }
   }
 }
+
+
