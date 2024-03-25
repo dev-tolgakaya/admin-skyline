@@ -1,0 +1,15 @@
+@import "../../../assets/scss/app.scss";
+
+.container {
+  position: relative;
+  min-width: 100px;
+  min-height: 100px;
+  padding: 0;
+
+  &.sm {
+    width: 500px;
+  }
+  &.lg {
+    width: 800px;
+  }
+}

@@ -17,6 +17,7 @@ import { LAYOUT_MODE_TYPES } from "../../Components/constants/layout";
 import ProfileMenu from "../../Components/CommonForBoth/TopBarDropDown/ProfileMenu";
 import useWindowSize from "helpers/hooks/useWindowSize";
 import { withTranslation } from "react-i18next";
+import Toggle from "Components/atoms/Toggle";
 
 const Header = (props: any) => {
   const dispatch = useDispatch<any>();
@@ -27,20 +28,23 @@ const Header = (props: any) => {
 
   const selectLayoutState = (state: any) => state.Layout;
 
-  const selectProperties = createSelector(
-    selectLayoutState,
-    (layout) => ({
-      layoutType: layout.layoutTypes,
-      layoutModeType: layout.layoutModeTypes,
-      layoutWidthType: layout.layoutWidthTypes,
-      topbarThemeType: layout.topbarThemeTypes,
-      leftSidebarThemeType: layout.leftSideBarThemeTypes,
-      leftSidebarImageType: layout.leftSidebarImageTypes,
-      leftSidebarTypes: layout.leftSidebarTypes
-    })
-  );
+  const selectProperties = createSelector(selectLayoutState, (layout) => ({
+    layoutType: layout.layoutTypes,
+    layoutModeType: layout.layoutModeTypes,
+    layoutWidthType: layout.layoutWidthTypes,
+    topbarThemeType: layout.topbarThemeTypes,
+    leftSidebarThemeType: layout.leftSideBarThemeTypes,
+    leftSidebarImageType: layout.leftSidebarImageTypes,
+    leftSidebarTypes: layout.leftSidebarTypes,
+  }));
   const {
-    layoutType, layoutModeType, layoutWidthType, topbarThemeType, leftSidebarThemeType, leftSidebarImageType, leftSidebarTypes
+    layoutType,
+    layoutModeType,
+    layoutWidthType,
+    topbarThemeType,
+    leftSidebarThemeType,
+    leftSidebarImageType,
+    leftSidebarTypes,
   } = useSelector(selectProperties);
   useEffect(() => {
     if (isMobile) {
@@ -53,6 +57,14 @@ const Header = (props: any) => {
     document
       .getElementsByClassName("navbar-header")[0]
       .classList.toggle("searchBar");
+  };
+
+  const handleToggle = () => {
+    if (layoutModeType === LAYOUT_MODE_TYPES.DARK) {
+      dispatch(changeLayoutMode(LAYOUT_MODE_TYPES.LIGHT));
+    } else {
+      dispatch(changeLayoutMode(LAYOUT_MODE_TYPES.DARK));
+    }
   };
 
   return (
@@ -71,20 +83,10 @@ const Header = (props: any) => {
         </div>
         <div className="d-flex nav-r-side justify-content-center align-items-center gap-4">
           <div className="d-inline-block">
-          <input type="checkbox"
-                  id="radioDark"
-                  name="radioDark"
-                  value={LAYOUT_MODE_TYPES.DARK}
-                  checked={layoutModeType === LAYOUT_MODE_TYPES.DARK}
-                  onChange={(e: any) => {
-                    if (e.target.checked) {
-                      dispatch(changeLayoutMode(LAYOUT_MODE_TYPES.DARK));
-                    }
-                    else{
-                      dispatch(changeLayoutMode(LAYOUT_MODE_TYPES.LIGHT));
-                    }
-                  }}
-                />
+            <Toggle
+              isChecked={layoutModeType === LAYOUT_MODE_TYPES.DARK}
+              handleToggle={handleToggle}
+            />
           </div>
           <div className="d-inline-block">
             <Search onClick={toggleSearchBar} role="button" />

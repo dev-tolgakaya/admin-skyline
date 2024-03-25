@@ -16,10 +16,11 @@
     "paths": {
       "@component/*": ["Components/views/*"],
       "@common/*": ["src/Components/Common/*"],
-      "@assets/*": ["Components/assets/*"],
+      "@assets/*": ["assets/*"],
       "@shared/*": ["app/_shared/*"],
       "@slices/*": ["slices/*"],
-      "@helpers/*": ["helpers/*"]
+      "@helpers/*": ["helpers/*"],
+      "@atoms/*": ["src/Components/atoms/*"],
     },
     "moduleResolution": "node",
     "resolveJsonModule": true,

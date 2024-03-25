@@ -1,0 +1,48 @@
+@import "../../../assets/scss/app.scss";
+
+.checkbox {
+  display: none;
+  + label {
+    cursor: pointer;
+    gap: 8px;
+    user-select: none;
+    display: flex;
+
+    .checkedIcon {
+      display: flex;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid var(--#{$prefix}gray-500);
+      background: var(--#{$prefix}gray-0);
+      &:hover {
+        border: 1px solid var(--#{$prefix}gray-700);
+        background: #ededee;
+      }
+    }
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.iconColor {
+  fill: var(--#{$prefix}gray-0);
+  display: none;
+}
+
+.checkbox:checked {
+  + label {
+    .checkedIcon {
+      background: var(--#{$prefix}gray-1000);
+      .iconColor {
+        color: var(--#{$prefix}gray-0);
+        display: block;
+      }
+      &:hover {
+        background: #333740;
+      }
+    }
+  }
+}

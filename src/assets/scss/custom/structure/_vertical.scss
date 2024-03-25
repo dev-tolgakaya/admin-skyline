@@ -123,6 +123,9 @@
           i {
             color: $sidebar-menu-item-hover-color;
           }
+          svg {
+            fill: $sidebar-menu-item-hover-color;
+          }
         }
       }
       &.mm-active {
@@ -164,11 +167,17 @@
     i {
       color: $sidebar-menu-item-active-color !important;
     }
+    svg {
+      fill: $sidebar-menu-item-active-color !important;
+    }
   }
   .active {
     color: $sidebar-menu-item-active-color !important;
     i {
       color: $sidebar-menu-item-active-color !important;
+    }
+    svg {
+      fill: $sidebar-menu-item-active-color !important;
     }
   }
   > i {

@@ -49,7 +49,7 @@ axiosInstance.interceptors.response.use(
     //     error.response?.data?.exception?.errorCode ===
     //       Auth.errorCodeRequiresRefreshToken) &&
     //   !originalRequest._retry &&
-    //   originalRequest.url !== apiURL// RequiresRefreshToken errorCode should not fired from refresh token api call , but it does!
+    //   originalRequest.url !== apiURL
     // ) {
     //   originalRequest._retry = true;
     //   try {

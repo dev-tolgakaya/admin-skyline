@@ -1,0 +1,54 @@
+@import "../../../assets/scss/app.scss";
+
+.accordion {
+  display: flex;
+  width: 695px;
+  padding: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+
+  .accordionHeader {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    align-self: stretch;
+
+    .accordionTitle {
+      flex: 1 0 0;
+      color:  var(--#{$prefix}gray-900);
+      &.isNotLink {
+        pointer-events: none;
+      }
+    }
+
+    .accordionIcon {
+      transform: rotate(90deg);
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  .accordionBody {
+    max-height: 0;
+
+    .accordionContent {
+      font-size: 0.875rem;
+      justify-items: start;
+    }
+  }
+}
+
+.accordion.open .accordionHeader .accordionIcon {
+  transform: rotate(-90deg);
+}
+
+.accordion .accordionBody {
+  overflow: hidden;
+  padding: 0;
+  max-height: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.accordion.open .accordionBody {
+  max-height: 500px;
+}

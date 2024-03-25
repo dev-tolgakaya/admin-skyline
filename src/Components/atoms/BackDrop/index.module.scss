@@ -1,0 +1,51 @@
+@import "../../../assets/scss/app.scss";
+
+.container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(52, 64, 84, 0.70);
+  backdrop-filter: blur(8px);
+  z-index: 10000001;
+  padding: 16px;
+  &.center {
+    justify-content: center;
+    align-items: center;
+  }
+  &.top {
+    justify-content: center;
+    align-items: flex-start;
+  }
+  &.bottom {
+    justify-content: center;
+    align-items: flex-end;
+  }
+  &.left {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  &.right {
+    justify-content: flex-end;
+    align-items: center;
+  }
+  &.top-left {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  &.top-right {
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+  &.bottom-left {
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  &.bottom-right {
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+}
+

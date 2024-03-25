@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 
 import { setMainTabArray } from "slices/general/reducer";
 import { dashboardMainTabs } from "common/constants/mainTabs";
-import Text from "Components/atoms/Text";
 
 const Dashboard = () => {
   const dispatch = useDispatch<any>();
@@ -14,11 +13,9 @@ const Dashboard = () => {
     return () => dispatch(setMainTabArray(null));
   }, []);
 
-  return (
-    <>
-      <Text size="caption-badge">tolga kaya</Text>
-    </>
-  );
+  const [visible, setVisible] = useState<boolean>(true);
+
+  return <></>;
 };
 
 export default Dashboard;

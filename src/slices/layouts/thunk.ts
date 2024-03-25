@@ -37,7 +37,6 @@ export const changeLayout = (layout: any) => async (dispatch: any) => {
  * @param {*} param0
  */
 export const changeLayoutMode = (layoutMode: any) => async (dispatch: any) => {
-    console.log('buraya adas')
   try {
     changeBodyAttribute("data-layout-mode", layoutMode);
     dispatch(changeLayoutModeAction(layoutMode));

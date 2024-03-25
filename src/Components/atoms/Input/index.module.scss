@@ -1,0 +1,149 @@
+@import "../../../assets/scss/app.scss";
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  align-self: stretch;
+  position: relative;
+  p {
+    margin: 0;
+  }
+
+  &.fullWidth {
+    width: 100% !important;
+  }
+
+  &.sm {
+    width: 200px;
+  }
+
+  &.md {
+    width: 360px;
+  }
+
+  &.lg {
+    width: 500px;
+  }
+
+  &.xl {
+    width: 600px;
+  }
+
+  .label {
+    color: var(--#{$prefix}gray-1000);
+    p {
+      margin: 0;
+    }
+  }
+
+  .input {
+    box-sizing: border-box;
+    display: flex;
+    height: 52px;
+    padding: 8px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 4px;
+    border: 1px solid var(--#{$prefix}gray-400);
+    color: var(--#{$prefix}gray-900);
+    background: var(--#{$prefix}gray-0);
+    @include body-500;
+    &::placeholder {
+      color: var(--#{$prefix}gray-500);
+    }
+    &:active,
+    &:focus {
+      border: 1px solid var(--#{$prefix}gray-900);
+      background: var(--#{$prefix}gray-25);
+      .fieldMsg {
+        color: var(--#{$prefix}gray-800);
+      }
+    }
+    &.disabled {
+      border: 1px solid var(--#{$prefix}gray-400);
+      background: var(--#{$prefix}gray-100);
+      color: var(--#{$prefix}gray-600);
+      cursor: not-allowed;
+      .fieldMsg {
+        color: var(--#{$prefix}gray-800);
+      }
+    }
+    &.success {
+      color: var(--#{$prefix}green-700);
+      border: 1px solid var(--#{$prefix}green-500);
+      background: var(--#{$prefix}green-50);
+    }
+    &.error {
+      color: var(--#{$prefix}error-700);
+      border: 1px solid var(--#{$prefix}error-500);
+      background: var(--#{$prefix}error-50);
+    }
+    &.validationError {
+      border: 1px solid var(--#{$prefix}error-300) !important;
+    }
+  }
+
+  .icon {
+    position: absolute;
+    top: 16px;
+    left: 10px;
+    fill: var(--#{$prefix}gray-600);
+    &.disabled {
+      fill: var(--#{$prefix}gray-400);
+    }
+    &.success {
+      fill: var(--#{$prefix}green-700);
+    }
+    &.error {
+      fill: var(--#{$prefix}error-700);
+    }
+    &.hasLabel {
+      top: 44px;
+    }
+  }
+
+  .iconEnd {
+    position: absolute;
+    top: 19px;
+    right: 10px;
+
+    fill: var(--#{$prefix}gray-600);
+    &.disabled {
+      fill: var(--#{$prefix}gray-400);
+    }
+    &.success {
+      fill: var(--#{$prefix}green-700);
+    }
+    &.error {
+      fill: var(--#{$prefix}error-700);
+    }
+    &.hasLabel {
+      top: 47px;
+    }
+    &.hasValidationError {
+      fill: var(--#{$prefix}error-500);
+    }
+  }
+
+  .withStartIcon {
+    padding-left: 35px;
+  }
+  .withEndIcon {
+    padding-right: 35px;
+  }
+
+  .validationErrorMsg {
+    color: var(--#{$prefix}error-500) !important;
+  }
+
+  .fieldMsg {
+    color: var(--#{$prefix}gray-500);
+    &.focus,
+    &.disabled {
+      color: var(--#{$prefix}gray-800);
+    }
+  }
+}

@@ -6,6 +6,7 @@ import {
   KeyboardTab,
   KeyboardBackspace,
 } from "@mui/icons-material";
+import Icon from "Components/atoms/Icon";
 import withRouter from "../../Components/Common/withRouter";
 import bottomLogo from "../../assets/images/softrobotics-bottom-logo.png";
 import { useSelector, useDispatch } from "react-redux";
@@ -31,9 +32,12 @@ const Sidebar = (props: any) => {
       <div className="vertical-menu">
         <div className="navbar-brand-box">
           <div className="d-flex gap-2 text-start">
-            <Camera
-              className="logoIconFirst"
+            <Icon
               onClick={() => props.router.navigate("/dashboard")}
+              className="logoIconFirst"
+              name="Graphy"
+              constantIcon
+              size={32}
             />
             <span onClick={() => props.router.navigate("/dashboard")}>
               <p className="logotext">FastPay</p>
@@ -51,10 +55,16 @@ const Sidebar = (props: any) => {
             </div>
             <div>
               {isCollpsed ? (
-                <KeyboardTab className="bottomLogo" onClick={() => tToggle()} />
-              ) : (
-                <KeyboardBackspace
+                <KeyboardTab
                   className="bottomLogo"
+                  role="button"
+                  onClick={() => tToggle()}
+                />
+              ) : (
+                <Icon
+                  name="HorizontalAlignLeft"
+                  role="button"
+                  constantIcon
                   onClick={() => tToggle()}
                 />
               )}

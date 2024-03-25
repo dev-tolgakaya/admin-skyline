@@ -24,7 +24,7 @@ export type Size =
 
 export interface ITextProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: Variant;
-  children: React.ReactNode;
+
   className?: string;
   size?: Size;
   color?: string;
@@ -43,7 +43,7 @@ const Text: React.FC<ITextProps> = ({
   const style = props.style ?? {};
 
   if (color) {
-    style.color = `var(--bs-${color})`;
+    style.color = `var(--prefix-${color})`;
   }
 
   return (
